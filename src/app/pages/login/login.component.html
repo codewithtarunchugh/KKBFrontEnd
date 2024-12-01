@@ -1,0 +1,37 @@
+<div class="bg-img">
+  <div class="content">
+    <header><a href="/index"> KKB</a > Login </header>
+    <form id="loginForm">
+      <div class="field">
+        <span class="fa fa-user"></span>
+        <input type="text" [(ngModel)]="loginObj.email" name="email" required placeholder="Email">
+      </div>
+      <div class="field space">
+        <span class="fa fa-lock"></span>
+        <input #passwordInput type="password" class="pass-key" name="password" [(ngModel)]="loginObj.password" required placeholder="Password">
+        <span class="show">SHOW</span>
+      </div>
+      <div class="pass">
+        <a routerLink="/forgot-password">Forgot Password?</a>
+      </div>
+      <div class="field" *ngIf="!loading">
+        <input type="button" value="LOGIN" (click)="login()">
+      </div>
+      <div class="field" *ngIf="loading">
+        <input type="button" value="processing" (click)="waitClick()">
+      </div>
+    </form>
+    <div class="login">Or login with</div>
+    <div class="links">
+      <div class="facebook">
+        <i class="fab fa-facebook-f"><span>Facebook</span></i>
+      </div>
+      <div class="instagram">
+        <i class="fab fa-instagram"><span>Instagram</span></i>
+      </div>
+    </div>
+    <div class="signup">Don't have account?
+      <a routerLink="/register">Signup Now</a>
+    </div>
+  </div>
+</div>

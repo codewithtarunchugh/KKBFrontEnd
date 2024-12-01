@@ -1,0 +1,38 @@
+<div class="bg-img">
+  <div class="content">
+    <header><a href="/index"> KKB</a > Register</header>
+    <form id="registerForm">
+      <div class="field">
+        <span class="fa fa-user"></span>
+        <input type="text"  name="email" required placeholder="Email">
+      </div>
+      <div class="field space">
+        <span class="fa fa-lock"></span>
+        <input #passwordInput type="password" class="pass-key" name="password"  required placeholder="Password">
+        <span class="show">SHOW</span>
+      </div>
+      <div class="field space">
+        <span class="fa fa-lock"></span>
+        <input #confirmPasswordInput type="password" class="pass-key" name="confirmPassword"  required placeholder="Confirm Password">
+        <span class="show">SHOW</span>
+      </div>
+      <div class="field space">
+        <span class="fa fa-user"></span>
+        <input type="text"  name="name" required placeholder="Name">
+      </div>
+      <div class="field space">
+        <span class="fa fa-phone"></span>
+        <input type="text"  name="phone" required placeholder="Phone">
+      </div>
+      <div class="pass">
+      </div>
+      <div class="field">
+        <input type="button" value="REGISTER" >
+      </div>
+    </form>
+
+    <div class="signup">Have account?
+      <a routerLink="/login">Login Now</a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,92 @@
+<div id="main">
+  <app-breadcrumb></app-breadcrumb>
+
+  <section id="guide-detail" class="guide-detail two-cols">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1>Free Legal Advice From Top Rated Lawyers</h1>
+          <br />
+        </div>
+        <div class="col-sm-8">
+          <div class="content-left">
+            <div class="input-group hidden-xs" style="float:right;">
+              <center>
+                <a style="height:47px; padding:14px; margin-left:20px;" href="/ask-a-free-question"
+                  class="button button-default">Ask a free question</a>
+                <a style="height:47px; padding:14px; margin-left:5px;" href="/legal-enquiry"
+                  class="button button-primary">Talk to a Lawyer</a>
+              </center>
+            </div>
+            <div style="margin-bottom: 18px;">
+              <div class="input-group">
+                <input type="text" class="input-text form-control" placeholder="Search Answers" [(ngModel)]="searchQuery"
+                  style="width:250px;" />
+                <span class="input-group-btn hidden-xs" style="float:left;">
+                  <button style="margin-left:10px;" type="submit" class="button button-primary" [routerLink]="searchQuery ? ['/search-question'] + '/' + searchQuery : ['/search-question/all']"><img style="height:25px;"
+                    src="/assets/images/svg/magnifying-glass.svg"> </button>
+
+                </span>
+                <span class="input-group-btn visible-xs" style="float:left;">
+                  <button type="submit" class="button button-primary" style="margin-left:10px;"  [routerLink]="searchQuery ? ['/search-question'] + '/' + searchQuery : ['/search-question/all']"> <img
+                      style="height:35px; width:25px;" src="/assets/images/svg/magnifying-glass.svg"> </button>
+                </span>
+              </div>
+            </div>
+            <ul class="list-group">
+              <li class="list-group-item">
+                <h2>Over 7500 legal queries answered by our top experts</h2>
+                <br />
+                <div class="row">
+                  <div class="col-lg-12 col-xs-12 colMb venue-amenities">
+                    <ul style="list-style-type:none;">
+                      <li class="col-sm-6 arrow-list-fancy" *ngFor="let category of categoriesListCount">
+                        <a style="font-size:14px;" [routerLink]="['/question-list', category.categoryId]" title="{{ category.categoryName }}">
+                          {{ category.categoryName }} ({{ category.totalCount }})
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+            </ul>
+
+            <div class="input-group visible-xs">
+              <a href="/ask-a-free-question" class="button button-default"
+                style="font-size:20px; width:100%; height:40px;">
+                <center>Ask a free question</center>
+              </a>
+              <br /><br />
+              <a href="/legal-enquiry" class="button button-primary" style="font-size:20px; width:100%; height:40px;">
+                <center>Talk to a Lawyer</center>
+              </a>
+              <br /><br />
+            </div>
+            <ul class="list-group">
+              <li class="list-group-item" style="text-align: justify;">
+                <h2>Kanoonkibaat.com: Free Legal Advice from Top Lawyers</h2>
+                Kanoonkibaat.com features some of the best legal experts in the country. They can provide practical
+                advice on various topics, such as criminal defense, property disputes, family issues, corporate law, and
+                more. Our lawyers are available in many cities and courts across India to assist you with your legal
+                needs.
+                <br /><br />
+                Searching online for legal advice isn’t always helpful. Instead of relying on Google, talk to a real
+                lawyer through Kanoonkibaat's free service. You’ll receive a quick and practical solution.
+                <br /><br />
+                We believe good information helps you make better choices. At Kanoonkibaat.com, you can find detailed
+                information about lawyers, their areas of expertise, and their experience. This way, you can choose the
+                right lawyer for you. Use our FREE LEGAL ADVICE service and join many others who have found the help
+                they needed.
+              </li>
+            </ul>
+            <br />
+
+          </div>
+
+        </div>
+        <br />
+        <app-right-side-ad></app-right-side-ad>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,88 @@
+<div class="wait-overlay" *ngIf="searching">
+<img src="/assets/img/wait.gif" alt="Searching...">
+<span>Loading...</span>
+</div>
+<div id="main">
+  <app-breadcrumb></app-breadcrumb>
+  <section id="guide-detail" class="guide-detail two-cols">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8">
+          <h1>Search your Query</h1>
+          <div class="input-group hidden-xs" style="margin-top:10px;float:left;">
+            <center>
+              <div style="margin-top:10px;margin-bottom: 18px;">
+                <select [(ngModel)]="categoryId" (ngModelChange)="selectCategory($event)" name="cat"
+                class="input-select form-control" id="cattid" style="width:300px;height:50px;">                
+                <option *ngIf="categoriesListCount.length > 0" value="0">All Categories</option>
+                <option *ngFor="let category of categoriesListCount" [value]="category.categoryId">
+                  {{ category.categoryName }} 
+                </option>
+              </select>                
+              </div>
+            </center>
+          </div>
+          <div class="input-group visible-xs" style="margin-top:10px;float:left;">
+            <center>
+              <div style="margin-top:10px;margin-bottom: 18px;">
+                <select [(ngModel)]="categoryId" (ngModelChange)="selectCategory($event)" name="cat"
+                class="input-select form-control" id="cattid" style="width:300px;height:50px;">                
+                <option *ngIf="categoriesListCount.length > 0" value="0">All Categories</option>
+                <option *ngFor="let category of categoriesListCount" [value]="category.categoryId">
+                  {{ category.categoryName }} 
+                </option>
+              </select>                
+              </div>
+            </center>
+          </div>
+          <div class="input-group" style="margin-top:28px;">
+            <input type="text" class="input-text form-control" placeholder="Search Answers"
+              [(ngModel)]="searchQuery" style="width:240px;margin-left: 10px;" />
+            <span class="input-group-btn hidden-xs" style="float:left;">
+              <button style="margin-left:10px;" type="submit" class="button button-primary"
+                (click)="searchQuestions()"><img style="height:25px;"
+                  src="/assets/images/svg/magnifying-glass.svg"> </button>
+
+            </span>
+            <span class="input-group-btn visible-xs" style="float:left;">
+              <button type="submit" class="button button-primary" style="margin-left:10px;"> <img
+                  style="height:35px; width:25px;" (click)="searchQuestions()" src="/assets/images/svg/magnifying-glass.svg"> </button>
+            </span>
+          </div>
+
+          <app-question-box
+          [questionList]="questionList"
+          [totalResult]="totalResult"
+          [currentPage]="currentPage"
+          (updateQuestionList)="onPageChange($event)"></app-question-box>
+
+          <section class="list-result visible-xs" style="padding-bottom:0px;" style="cursor:pointer;">
+            <br />
+            <div class="block-card blue-bg" style="border-radius:10px;">
+              <div class="solid text-left white-txt">
+                <div class="row">
+                  <div class="col-xs-8">
+                    <b class="solid-title" style="color:#FFF;">Googling your legal issue online?</b><br /><br />
+                    <p class="lead">The internet is not a lawyer and neither are you.<br />Talk to a real lawyer about
+                      your legal issue.</p>
+                    <div class="cta">
+                      <button class="button button-default text-bold">TALK TO A LAWYER</button>
+                    </div>
+                  </div>
+                  <div class="col-xs-4">
+                    <div class="img-wrapper text-right">
+                      <img src="/assets/img/media/lawyer/empty.png" alt="KanoonKiBaat" style="width:90px; height:90px;"
+                        class="img-responsive">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <br />
+        <app-right-side-ad></app-right-side-ad>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,114 @@
+<div class="wait-overlay" *ngIf="searching">
+  <img src="/assets/img/wait.gif" alt="Searching...">
+  <span>Loading...</span>
+</div>
+<div id="main">
+  <app-breadcrumb></app-breadcrumb>
+  <section id="guide-detail" class="guide-detail two-cols">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8">
+          <section id="guide-detail" class="guide-detail two-cols">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-7">
+                  <div *ngIf="pageName && contentCategory && contentType && sanitizedHtmlContent">
+                    <div [innerHTML]="sanitizedHtmlContent"></div>
+                  </div>
+                  <div *ngIf="!pageName && !contentCategory && contentType">
+                    <h1>Law Guides and Articles</h1>
+                    <br />
+                    <div class="input-group hidden-xs" style="float:right;">
+                      <center>
+                        <a style="height:47px; padding:14px; margin-left:20px;" href="/ask-a-free-question"
+                          class="button button-default">Ask a free question</a>
+                        <a style="height:47px; padding:14px; margin-left:5px;" href="/legal-enquiry"
+                          class="button button-primary">Talk to a Lawyer</a>
+                      </center>
+                    </div>
+                    <div style="margin-bottom: 18px;">
+                      <div class="input-group">
+                        <input type="text" class="input-text form-control" placeholder="Search Guides"
+                          [(ngModel)]="searchQuery" style="width:250px;" />
+                        <span class="input-group-btn hidden-xs" style="float:left;">
+                          <button style="margin-left:10px;" type="submit" class="button button-primary"
+                            [routerLink]="searchQuery ? ['/search-question'] + '/' + searchQuery : ['/search-question/all']"><img
+                              style="height:25px;" src="/assets/images/svg/magnifying-glass.svg"> </button>
+
+                        </span>
+                        <span class="input-group-btn visible-xs" style="float:left;">
+                          <button type="submit" class="button button-primary" style="margin-left:10px;"
+                            [routerLink]="searchQuery ? ['/search-question'] + '/' + searchQuery : ['/search-question/all']">
+                            <img style="height:35px; width:25px;" src="/assets/images/svg/magnifying-glass.svg">
+                          </button>
+                        </span>
+                      </div>
+                    </div>
+                    <ul class="list-group">
+                      <li class="list-group-item">
+
+                        <div class="row">
+                          <div class="col-lg-12 col-xs-12 colMb venue-amenities">
+                            <ul style="list-style-type:none;">
+                              <li class="col-sm-6 arrow-list-fancy" *ngFor="let category of categoriesListCount">
+                                <a style="font-size:14px;"
+                                  [routerLink]="['/indian-kanoon', contentType, category.categoryName.split(' ').join('-').toLowerCase() ]"
+                                  title="{{ category.categoryName }}">
+                                  {{ category.categoryName }}
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div *ngIf="!pageName && contentCategory && contentType">
+                    <div class="question-box border-box" *ngFor="let content of contentList">
+                      <div class="question-title" style="background:#F2F2F2;">
+                        <div class="title title-smaller" style="padding-left:20px;">
+                          <a [routerLink]="content.pageName">
+                            <h2 [innerHTML]="content.pageName.split('-').join(' ')"></h2>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="question-body hidden-xs">
+                        <div><a [routerLink]="content.pageName"> <img style="float:left; margin-right:20px; "
+                              [src]="content.featuredImage" class="fullwidth1" alt="">
+                          </a></div>
+                        <div [innerHTML]="content.featuredText"></div>
+                        <p><a [routerLink]="content.pageName" class="button button-default">Read More</a></p>
+                      </div>
+                      <div class="question-body visible-xs">
+                        <div><a [routerLink]="content.pageName"> <img width="100%" [src]="content.featuredImage"
+                              class="fullwidth1" alt="">
+                          </a></div>
+                        <div [innerHTML]="content.featuredText"></div>
+                        <p><a [routerLink]="content.pageName" class="button button-default">Read More</a></p>
+                      </div>
+                    </div>
+                    <center>
+                      <ul class="pagination center pull-center">
+                        <li *ngIf="currentPage > 0">
+                          <a (click)="changePage(currentPage - 1)">«</a>
+                        </li>
+                        <li *ngFor="let page of displayPages; let i = index" [class.active-page]="page === currentPage">
+                          <a (click)="changePage(page)">{{ page + 1 }}</a>
+                        </li>
+                        <li *ngIf="currentPage < pages.length - 1">
+                          <a (click)="changePage(currentPage + 1)">»</a>
+                        </li>
+                      </ul>
+                    </center>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <br />
+        <app-right-side-ad></app-right-side-ad>
+      </div>
+    </div>
+  </section>
+</div>

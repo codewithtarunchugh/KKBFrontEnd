@@ -1,0 +1,15 @@
+<section id="breadcrumb" class="breadcrumb-wrapper hidden-xs text-left">
+  <div class="container">
+    <ul class="list-inline">
+      <li>
+        <a routerLink="">Home</a>        
+      </li>
+      <ng-container *ngFor="let breadcrumb of breadcrumbs; let last = last; let i = index">
+        <li>
+          <a [routerLink]="breadcrumb.url" *ngIf="i < breadcrumbs.length - 1">{{ breadcrumb.label.split('-').join(' ') }}</a>          
+          <span *ngIf="i === breadcrumbs.length - 1">{{ breadcrumb.label.split('-').join(' ') }}</span>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</section>

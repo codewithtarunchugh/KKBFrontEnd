@@ -1,0 +1,7 @@
+.breadcrumb-wrapper ul li {
+  margin-right: 5px;
+}
+
+.breadcrumb-wrapper ul li:last-child {
+  margin-right: 0;
+}

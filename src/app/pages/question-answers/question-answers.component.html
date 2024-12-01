@@ -1,0 +1,66 @@
+<div id="main">
+  <app-breadcrumb></app-breadcrumb>
+
+  <section id="guide-detail" class="guide-detail two-cols">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8">
+
+          <div class="question">
+            <div class="question-title">
+              {{ questionList.length > 0 ? questionList[0].questionText : '' }}
+            </div>
+            <div class="question-meta" style="padding-top:10pt">
+              31-May-2023 (In GST Law)
+            </div>
+            <div class="question-content">
+              {{ questionList.length > 0 ? questionList[0].userQuestionText : '' }}
+
+            </div>
+          </div>
+
+
+          <div class="answers">
+            <div class="answers-title">
+              Answers ({{ answerList.length }})
+            </div>
+            <div class="timeline">
+              <div class="timeline-item" *ngFor="let answer of answerList; let i = index">
+                <div class="card">
+                  <div class="answer-meta">
+                    Answer #{{ answer.answerOrder }}
+                  </div>
+                  <div class="advocate-info">
+                    <img alt="Advocate Image" height="50" src="/assets/img/gg.jpg" width="50" />
+                    <div>
+                      <div class="advocate-name">
+                        Advocate John Doe
+                        <span class="advocate-exp">
+                          (Exp: 15+ years)
+                        </span>
+                      </div>
+                      <div class="advocate-city">
+                        New York
+                      </div>
+                    </div>
+                  </div>
+                  <div class="answer-content" [innerHTML]="answer.answerText">
+                   
+                  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+        <br />
+        <app-right-side-ad></app-right-side-ad>
+
+      </div>
+    </div>
+
+  </section>
+</div>

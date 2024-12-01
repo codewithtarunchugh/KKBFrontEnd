@@ -1,0 +1,47 @@
+.icon-list {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.icon-list i {
+  margin-right: 5px;
+}
+.advocate-image {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+}
+p{
+  text-align: justify!important;
+}
+
+.pagination-container {
+  margin: 20px 0; /* Adjust margin as necessary */
+}
+
+.pagination {
+  list-style: none;
+  padding: 0;
+}
+
+.pagination li {
+  display: inline-block; /* Keep items inline */
+  margin: 0 5px; /* Adjust spacing between pages */
+}
+
+.pagination a {
+  align-content: center;
+  text-decoration: none;
+  color: #000; /* Default link color */
+  padding: 5px 10px; /* Padding for clickable area */
+}
+
+.pagination .active-page a {
+  font-weight: bold; /* Make active page bold */
+  color: #151616; /* Optionally change color for active page */
+}
+
+.pagination a:hover {
+  background-color: #f0f0f0; /* Background on hover */
+}
