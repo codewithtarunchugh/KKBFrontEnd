@@ -1,0 +1,85 @@
+.card {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.card:hover {
+  background-color: #f0f0f0; /* Change background on hover */
+}
+
+.selected {
+  background-color: #d1e7dd; /* Change background when selected */
+}
+
+.card-body {
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+.progress-bar{
+  background-color: black!important;
+}
+.card-body i {
+  margin-bottom: 0.2rem; /* Space between icon and text */
+  font-size: 44px; /* Adjust icon size */
+}
+
+.card-body span {
+  display: block; /* Ensures the text is on its own line */
+}
+h3{
+  color: #851c1c!important;
+  font-weight: bold;
+}
+button i{
+  color: #851c1c!important;
+}
+.pin-code-container {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.invalid-feedback {
+  color: red;
+  font-size: 0.875em;
+}
+
+.button-group {
+  margin-top: 20px;
+}
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+}
+
+/* Change color when checked */
+input[type="checkbox"]:checked {
+  background-color: #000000;
+  border-color: #000000;
+}
+
+/* Use an SVG for the checkmark */
+input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zY3JlZW5zY3FwIj4KPHBhdGggZD0iTTEyLjUsMi41Yy0yLjcsMC00LjgsMi43LTQuOCw1LjgsMCAyLjcsMi40LDUuOCw1LjgsNS44QzYuMyw2LjQsNi42LDEuOCw2LjUsMUM5LjQsMTEuOCwxMCw5LDEuOCw5TDExLDEzLjJDNjgsMTQuOCw1LDEzLjQsMiwxMy4yTDAsMi41eiIvPjwvc3ZnPg==');
+  background-size: cover;
+}

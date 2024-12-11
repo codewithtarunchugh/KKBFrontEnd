@@ -1,7 +1,3 @@
-<div class="wait-overlay" *ngIf="searching">
-  <img src="/assets/img/wait.gif" alt="Searching...">
-  <span>Loading...</span>
-  </div>
 <div id="main">
   <app-breadcrumb></app-breadcrumb>
   <section id="guide-detail" class="guide-detail two-cols">
@@ -9,14 +5,14 @@
       <div class="row">
         <div class="col-sm-8">
           <h1>Free GST Legal Advice from</h1><br/>
-        
+
           <app-question-box
             [questionList]="questionList"
             [totalResult]="totalResult"
             [currentPage]="currentPage"
             (updateQuestionList)="onPageChange($event)"></app-question-box>
-          
- 
+
+
         </div>
         <app-right-side-ad></app-right-side-ad>
       </div>

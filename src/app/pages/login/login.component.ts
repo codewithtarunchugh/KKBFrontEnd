@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
     }
   }
   ngOnInit() {
+    this.userService.logout();
     if (this.userService.IsLoggedIn()) {
       // User is already logged in
       let role = this.userService.getRoleFromStorage();

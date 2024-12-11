@@ -45,12 +45,44 @@
                   style="height:35px; width:25px;" (click)="searchQuestions()" src="/assets/images/svg/magnifying-glass.svg"> </button>
             </span>
           </div>
+<br/>
 
-          <app-question-box
-          [questionList]="questionList"
-          [totalResult]="totalResult"
-          [currentPage]="currentPage"
-          (updateQuestionList)="onPageChange($event)"></app-question-box>
+            <div class="question-box border-box" *ngFor="let content of contentList">
+              <div class="question-title" style="background:#F2F2F2;">
+                <div class="title title-smaller" style="padding-left:20px;">
+                  <a [routerLink]="[content.content]">
+                    <h2 [innerHTML]="content.pageName.split('-').join(' ')"></h2>
+                  </a>
+                </div>
+              </div>
+              <div class="question-body hidden-xs">
+                <div><a [routerLink]="[content.content]"> <img style="float:left; margin-right:20px; "
+                      [src]="content.featuredImage" class="fullwidth1" alt="">
+                  </a></div>
+                <div [innerHTML]="content.featuredText"></div>
+                <p><a [routerLink]="[content.content]" class="button button-default">Read More</a></p>
+              </div>
+              <div class="question-body visible-xs">
+                <div><a [routerLink]="[content.content]"> <img width="100%" [src]="content.featuredImage"
+                      class="fullwidth1" alt="">
+                  </a></div>
+                <div [innerHTML]="content.featuredText"></div>
+                <p><a [routerLink]="[content.content]" class="button button-default">Read More</a></p>
+              </div>
+            </div>
+            <center>
+              <ul class="pagination center pull-center">
+                <li *ngIf="currentPage > 0">
+                  <a (click)="changePage(currentPage - 1)">«</a>
+                </li>
+                <li *ngFor="let page of displayPages; let i = index" [class.active-page]="page === currentPage">
+                  <a (click)="changePage(page)">{{ page + 1 }}</a>
+                </li>
+                <li *ngIf="currentPage < pages.length - 1">
+                  <a (click)="changePage(currentPage + 1)">»</a>
+                </li>
+              </ul>
+            </center>
 
           <section class="list-result visible-xs" style="padding-bottom:0px;" style="cursor:pointer;">
             <br />

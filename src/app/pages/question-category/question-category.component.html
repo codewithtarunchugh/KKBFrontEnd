@@ -12,10 +12,10 @@
           <div class="content-left">
             <div class="input-group hidden-xs" style="float:right;">
               <center>
-                <a style="height:47px; padding:14px; margin-left:20px;" href="/ask-a-free-question"
-                  class="button button-default">Ask a free question</a>
-                <a style="height:47px; padding:14px; margin-left:5px;" href="/legal-enquiry"
-                  class="button button-primary">Talk to a Lawyer</a>
+                <a style="height:47px; padding:14px; margin-left:20px;" routerLink="ask-question"
+                  class="button button-default"><i class="far fa-comment-dots"></i>&nbsp;Ask a free question</a>
+                <a style="height:47px; padding:14px; margin-left:5px;" routerLink="/enquiry"
+                  class="button button-primary"><i class="fa fa-phone"></i>&nbsp;Talk to a Lawyer</a>
               </center>
             </div>
             <div style="margin-bottom: 18px;">
@@ -35,14 +35,15 @@
             </div>
             <ul class="list-group">
               <li class="list-group-item">
-                <h2>Over 7500 legal queries answered by our top experts</h2>
+                <h2>Over {{totalQuestionCount}} legal queries answered by our top experts</h2>
                 <br />
                 <div class="row">
                   <div class="col-lg-12 col-xs-12 colMb venue-amenities">
                     <ul style="list-style-type:none;">
-                      <li class="col-sm-6 arrow-list-fancy" *ngFor="let category of categoriesListCount">
+                      <li class="col-sm-4" *ngFor="let category of categoriesListCount">
                         <a style="font-size:14px;" [routerLink]="['/question-list', category.categoryId]" title="{{ category.categoryName }}">
-                          {{ category.categoryName }} ({{ category.totalCount }})
+                          <p style="text-align: center;">
+                          <i style="font-size: 44px;color: rgb(88, 83, 82); " class="{{ category.fontImage }}"></i></p> <p style="color:black!important;text-align: center;white-space: nowrap;margin:0px 0px 0px 0px!important;padding:5px 0px 10px 0px!important"> {{ category.categoryName }} ({{ category.totalCount }})</p>
                         </a>
                       </li>
                     </ul>
@@ -52,12 +53,12 @@
             </ul>
 
             <div class="input-group visible-xs">
-              <a href="/ask-a-free-question" class="button button-default"
+              <a routerLink="ask-question" class="button button-default"
                 style="font-size:20px; width:100%; height:40px;">
                 <center>Ask a free question</center>
               </a>
               <br /><br />
-              <a href="/legal-enquiry" class="button button-primary" style="font-size:20px; width:100%; height:40px;">
+              <a routerLink="/enquiry" class="button button-primary" style="font-size:20px; width:100%; height:40px;">
                 <center>Talk to a Lawyer</center>
               </a>
               <br /><br />

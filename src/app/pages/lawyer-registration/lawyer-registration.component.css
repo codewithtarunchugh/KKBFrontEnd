@@ -1,0 +1,44 @@
+/* app.component.css */
+.container {
+
+  margin-top: 30px;
+}
+
+.text-danger {
+  font-size: 12px;
+  color: red;
+}
+
+button {
+  margin-top: 10px;
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+}
+
+/* Change color when checked */
+input[type="checkbox"]:checked {
+  background-color: #000000;
+  border-color: #000000;
+}
+
+/* Use an SVG for the checkmark */
+input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zY3JlZW5zY3FwIj4KPHBhdGggZD0iTTEyLjUsMi41Yy0yLjcsMC00LjgsMi43LTQuOCw1LjgsMCAyLjcsMi40LDUuOCw1LjgsNS44QzYuMyw2LjQsNi42LDEuOCw2LjUsMUM5LjQsMTEuOCwxMCw5LDEuOCw5TDExLDEzLjJDNjgsMTQuOCw1LDEzLjQsMiwxMy4yTDAsMi41eiIvPjwvc3ZnPg==');
+  background-size: cover;
+}

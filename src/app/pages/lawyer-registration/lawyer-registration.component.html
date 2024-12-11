@@ -1,0 +1,372 @@
+<div class="container form-container" style="margin-top: 10px;">
+  <h2 class="text-center"><i class="fas fa-question-circle"></i>&nbsp;Grow Your Legal Practices with KanoonKiBaat Join
+    Now!!</h2>
+  <br />
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="firstName" class="form-label">First Name</label>
+        <input type="text" class="form-control" id="firstName" formControlName="firstName" placeholder="First Name">
+        <div *ngIf="userForm.get('firstName')?.invalid && userForm.get('firstName')?.touched" class="text-danger">
+          First name is required and must be at least 2 characters long.
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input type="text" class="form-control" id="lastName" formControlName="lastName" placeholder="Last Name">
+        <div *ngIf="userForm.get('lastName')?.invalid && userForm.get('lastName')?.touched" class="text-danger">
+          Last name is required and must be at least 2 characters long.
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="mobileNumber" class="form-label">Mobile Number</label>
+        <input type="text" class="form-control" id="mobileNumber" formControlName="mobileNumber"
+          placeholder="Mobile Number">
+        <div *ngIf="userForm.get('mobileNumber')?.invalid && userForm.get('mobileNumber')?.touched" class="text-danger">
+          Please enter a valid 10-digit mobile number.
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="profileUpload" class="form-label">Profile Upload</label>
+        <input type="file" class="form-control" id="profileUpload" formControlName="profileUpload">
+        <div *ngIf="userForm.get('profileUpload')?.invalid && userForm.get('profileUpload')?.touched"
+          class="text-danger">
+          Profile Upload is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email Address">
+        <div *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched" class="text-danger">
+          Please enter a valid email address.
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="practiceYear" class="form-label">Practice Year Since</label>
+        <select class="form-control" id="practiceYear" formControlName="practiceYear">
+          <option>Select Practice year</option>
+
+          <option *ngFor="let year of years" (ngValue)="year" [value]="year">{{ year }}</option>
+        </select>
+        <div *ngIf="userForm.get('practiceYear')?.invalid && userForm.get('practiceYear')?.touched" class="text-danger">
+          Practice year is required.
+        </div>
+      </div>
+    </div>
+    <!-- start from here-->
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="state" class="form-label">State</label>
+        <select class="form-control" id="state">
+          <option>Choose...</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="city" class="form-label">City</label>
+        <input type="text" class="form-control" id="city" placeholder="City">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="language" class="form-label">Language</label>
+        <select class="form-control" id="language">
+          <option>Please Select</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="specialization" class="form-label">Specialization</label>
+        <select class="form-control" id="specialization">
+          <option>Please Select</option>
+        </select>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="address" class="form-label">Address</label>
+      <textarea class="form-control" id="address" rows="2" placeholder="Address..."></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="about" class="form-label">About</label>
+      <textarea class="form-control" id="about" rows="3"></textarea>
+    </div>
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <label for="pincode" class="form-label">Pincode</label>
+        <input type="text" class="form-control" id="pincode" placeholder="Pincode">
+      </div>
+      <div class="col-md-4">
+        <label for="enrollmentNumber" class="form-label">Enrollment Number</label>
+        <input type="text" class="form-control" id="enrollmentNumber" placeholder="Enrollment Number">
+      </div>
+      <div class="col-md-4">
+        <label for="consultancyFee" class="form-label">Consultancy Fee</label>
+        <select class="form-control" id="consultancyFee">
+          <option>Choose...</option>
+        </select>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="practiceAreas" class="form-label">Practice areas</label>
+        <input type="text" class="form-control" id="practiceAreas" placeholder="Practice areas">
+      </div>
+      <div class="col-md-6">
+        <label for="courts" class="form-label">Courts</label>
+        <input type="text" class="form-control" id="courts" placeholder="Courts">
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" formControlName="password" placeholder="Password">
+        <div *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.touched" class="text-danger">
+          Password is required and must be at least 6 characters long.
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="confirmPassword" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword"
+          placeholder="Confirm Password">
+        <div *ngIf="userForm.get('confirmPassword')?.invalid && userForm.get('confirmPassword')?.touched"
+          class="text-danger">
+          Confirm password is required and must match the password.
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="terms" formControlName="terms">
+      <label class="form-check-label" for="terms">Agree to terms and conditions</label>
+      <div *ngIf="userForm.get('terms')?.invalid && userForm.get('terms')?.touched" class="text-danger">
+        You must agree to the terms and conditions.
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="userForm.invalid">Submit</button>
+  </form>
+
+  <div class="col-sm-12">
+    <h2 class="text-center"><i class="fas fa-question-circle"></i>&nbsp;Frequently Asked Questions</h2>
+    <br />
+
+    <div class="faq-wrapper masonry-layout" style="column-count: 1 !important;">
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">What is LawRato?</div>
+          <div class="faq-content" itemprop="acceptedAnswer" >
+            <p itemprop="text">LawRato is India's leading legal advice and lawyer search platform! We are a curated
+              online marketplace that connects our network of high-quality lawyers with business clients. We provide a
+              one-stop platform to ask, answer, discuss legal questions, and from time to time, we even post legal
+              updates and news for those of you who can't get enough of law-related newsbytes!</p>
+          </div>
+        </div>
+      </div>
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">Is LawRato a law firm?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">No, LawRato is not a law firm. We are a neutral and transparent legal tech platform that
+              connects our network of high-quality lawyers with business clients. LawRato does not entertain and take up
+              any client matter directly.</p>
+          </div>
+        </div>
+      </div>
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">Can listing myself with LawRato?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">By using LawRato, the lawyers on our platform also do not advertise nor solicit business
+              from potential clients. In fact, what is unique about LawRato is that clients themselves post their
+              queries or come with their cases on our platform looking for lawyers. Ultimately, the client determines
+              who he/she wishes to engage as his/her lawyer.</p>
+          </div>
+        </div>
+      </div>
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">How does LawRato work?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">Well, it's as easy as 1-2-3<br>
+              1. The law-seeker searches and selects the Lawyer based on the client's specific legal need's The
+              law-seeker can search by Specialization, City or Court Name.<br>
+
+              2. The law-seeker fills up the ???contact lawyer??? form on the lawyer profile page.<br>
+
+              3. We share lawyer???s contact details with the law-seeker and the law-seeker contact details with the
+              lawyer through the LawRato Partner App.<br>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">Why should I sign up with LawRato?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">Our registered lawyers get exclusive access to queries or cases posted on LawRato by
+              members of the public. Through LawRato, this may even lead to a formal engagement with the client!
+              Registered lawyers also get to answer questions posed by members of the public to gain ratings and
+              reviews. If you are a registered lawyer, you can be sure to get more exposure through LawRato than if you
+              choose to remain anonymous.<br><br>
+              If you are not registered with us, you may only access the free content offered by our platform, such as
+              some of our legal news and updates. You will not be able to search for potential clients, be engaged
+              through the client users on our website.</p>
+          </div>
+        </div>
+      </div>
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">Is this a lawyer referral service?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">No. LawRato is not referring people to a particular lawyer. Clients choose which lawyer
+              they would like to consult regarding their legal requirements from all available, participating lawyers.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">Am I eligible to sign up?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">If you are a practicing lawyer and are currently registered with the Bar Council of
+              India, you are eligible to sign up.<br>
+              To sign up, you need to fill in the form on this page and list one or more of the following practice areas
+              on your LawRato profile:<br>
+              - Arbitration<br>
+              - Cheque Bounce<br>
+              - Consumer Court<br>
+              - Trademark &amp; Copyright<br>
+              - Criminal<br>
+              - Customs &amp; Central Excise<br>
+              - Cyber Crime<br>
+              - Divorce<br>
+              - Documentation<br>
+              - Family<br>
+              - Immigration<br>
+              - Insurance<br>
+              - Startup<br>
+              - International Law<br>
+              - Labour &amp; Service<br>
+              - Landlord/Tenant<br>
+              - Medical Negligence<br>
+              - Motor Accident<br>
+              - Property<br>
+              - R.T.I<br>
+              - Recovery<br>
+              - Tax<br>
+              - Wills / Trusts<br>
+              - Corporate<br>
+              - Child Custody<br>
+              - Muslim Law<br>
+              - Armed Forces Tribunal<br>
+              - Supreme Court<br>
+              - Civil<br>
+              - Banking / Finance<br>
+              - GST</p>
+          </div>
+        </div>
+      </div>
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">How do I sign up?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">1. To sign up, you need to fill in the form available at this page.<br>
+              2. Provide the requisite details to the best of your knowledge.<br>
+              3. Wait for profile activation after you submit the complete form.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">Is there a cost to join or monthly fee to participate?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">No. There is no cost to join and no monthly subscription.</p>
+          </div>
+        </div>
+      </div>
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">Does LawRato charge a marketing fee?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">No.</p>
+          </div>
+        </div>
+      </div>
+      <div class="masonry-item hidden-xs" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">Where is my profile?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">If you don't see your profile on LawRato, make sure your name is spelled correctly. If
+              you are still unable to locate your profile, it is quite possible that your profile is under moderation by
+              LawRato Team of Experts.</p>
+          </div>
+        </div>
+      </div>
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">How can I create a powerful profile?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">Here are some things you should be sure to include:<br>
+              <b>Work experience.</b> What legal-related work have you done since you graduated from law school? You can
+              mention the type of work experience as well as the number of years you have practiced. This can include
+              leadership positions that you have held with legal associations (e.g., your state bar).<br>
+              <b>Legal associations.</b> We are interested in your professional involvements in the legal community.
+              This shows that you take your law practice seriously and that you are committed to improving yourself as
+              an attorney.<br><br>
+              Some Additional Tips:<br>
+              <b>Fill out your LawRato profile completely (and double-check what's already there).</b> A surprising
+              number of lawyers do nothing to make sure that their LawRato profile accurately reflects their credentials
+              and experience. Take a second to make sure that the information displayed is correct. It is important to
+              provide as much relevant (i.e., legal-related) information as you can.<br>
+              <b>Keep your profile updated.</b> Laws change, and current accomplishments are a good indicator that you
+              have kept up with the changes.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">Do I have to offer all of the services in my practice area?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">No. You may choose to offer all, a few, or just 1 of the services???it???s completely up
+              to you. You can change your selections at any time if a service isn???t benefiting your practice.</p>
+          </div>
+        </div>
+      </div>
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">Will clients be local to my area?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">Yes. Your profile is only suggested to potential clients who are looking for legal help
+              in your geographical area.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">Who sets the price of each service?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">The lawyers themselves decide the fee that they charge for the legal services provided by
+              them.</p>
+          </div>
+        </div>
+      </div>
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">Do I have to commit to a certain length of time?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">No. You can opt-out of services at any time if they???re not benefiting your practice.
+              Simply email us at partner@lawrato.com in case you wish to deactivate your LawRato profile.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

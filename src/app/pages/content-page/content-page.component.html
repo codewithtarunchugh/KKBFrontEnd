@@ -1,7 +1,4 @@
-<div class="wait-overlay" *ngIf="searching">
-  <img src="/assets/img/wait.gif" alt="Searching...">
-  <span>Loading...</span>
-</div>
+
 <div id="main">
   <app-breadcrumb></app-breadcrumb>
   <section id="guide-detail" class="guide-detail two-cols">
@@ -11,7 +8,7 @@
           <section id="guide-detail" class="guide-detail two-cols">
             <div class="container">
               <div class="row">
-                <div class="col-sm-7">
+                <div class="col-sm-12">
                   <div *ngIf="pageName && contentCategory && contentType && sanitizedHtmlContent">
                     <div [innerHTML]="sanitizedHtmlContent"></div>
                   </div>
@@ -20,10 +17,10 @@
                     <br />
                     <div class="input-group hidden-xs" style="float:right;">
                       <center>
-                        <a style="height:47px; padding:14px; margin-left:20px;" href="/ask-a-free-question"
-                          class="button button-default">Ask a free question</a>
-                        <a style="height:47px; padding:14px; margin-left:5px;" href="/legal-enquiry"
-                          class="button button-primary">Talk to a Lawyer</a>
+                        <a style="height:47px; padding:14px; margin-left:20px;" routerLink="ask-question"
+                          class="button button-default"><i class="far fa-comment-dots"></i>&nbsp;Ask a free question</a>
+                        <a style="height:47px; padding:14px; margin-left:5px;" routerLink="/enquiry"
+                          class="button button-primary"><i class="fa fa-phone"></i>&nbsp;Talk to a Lawyer</a>
                       </center>
                     </div>
                     <div style="margin-bottom: 18px;">
@@ -32,13 +29,13 @@
                           [(ngModel)]="searchQuery" style="width:250px;" />
                         <span class="input-group-btn hidden-xs" style="float:left;">
                           <button style="margin-left:10px;" type="submit" class="button button-primary"
-                            [routerLink]="searchQuery ? ['/search-question'] + '/' + searchQuery : ['/search-question/all']"><img
+                            [routerLink]="searchQuery ? ['/search-articles'] + '/' + searchQuery : ['/search-articles/all']"><img
                               style="height:25px;" src="/assets/images/svg/magnifying-glass.svg"> </button>
 
                         </span>
                         <span class="input-group-btn visible-xs" style="float:left;">
                           <button type="submit" class="button button-primary" style="margin-left:10px;"
-                            [routerLink]="searchQuery ? ['/search-question'] + '/' + searchQuery : ['/search-question/all']">
+                            [routerLink]="searchQuery ? ['/search-articles'] + '/' + searchQuery : ['/search-articles/all']">
                             <img style="height:35px; width:25px;" src="/assets/images/svg/magnifying-glass.svg">
                           </button>
                         </span>
@@ -50,11 +47,12 @@
                         <div class="row">
                           <div class="col-lg-12 col-xs-12 colMb venue-amenities">
                             <ul style="list-style-type:none;">
-                              <li class="col-sm-6 arrow-list-fancy" *ngFor="let category of categoriesListCount">
+                              <li class="col-sm-4" *ngFor="let category of categoriesListCount">
                                 <a style="font-size:14px;"
                                   [routerLink]="['/indian-kanoon', contentType, category.categoryName.split(' ').join('-').toLowerCase() ]"
                                   title="{{ category.categoryName }}">
-                                  {{ category.categoryName }}
+                                  <p style="text-align: center!important;">
+                                    <i style="font-size: 44px;color: rgb(88, 83, 82); " class="{{ category.fontImage }}"></i></p> <p style="color:black!important;text-align: center!important;font-size: 16px!important; white-space: nowrap;margin:0px 0px 0px 0px!important;padding:5px 0px 10px 0px!important"> {{ category.categoryName }} </p>
                                 </a>
                               </li>
                             </ul>
