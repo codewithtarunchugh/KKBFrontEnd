@@ -10,7 +10,7 @@
     <div *ngIf="currentStep === 0">
       <h3>Please Select Case Type</h3>
       <div class="row">
-        <div class="col-md-3 col-sm-4 col-6" *ngFor="let caseType of caseTypes">
+        <div class="col-md-3 col-sm-4 col-xs-6 col-6" *ngFor="let caseType of caseTypes">
           <div class="card" (click)="selectCaseType(caseType)" [ngClass]="{'selected': selectedCaseType === caseType}">
             <div class="card-body text-center">
               <div>
@@ -27,7 +27,7 @@
     <div *ngIf="currentStep === 1">
       <h3>Please Select Case Category</h3>
       <div class="row">
-        <div class="col-md-3 col-sm-4 col-6" *ngFor="let subGroup of selectedCaseType.subGroups">
+        <div class="col-md-3 col-sm-4 col-xs-6 col-6" *ngFor="let subGroup of selectedCaseType.subGroups">
           <div class="card" (click)="selectSubGroup(subGroup)" [ngClass]="{'selected': selectedSubGroup === subGroup}">
             <div class="card-body text-center">
               <div>
@@ -46,7 +46,7 @@
     <div *ngIf="currentStep === 2">
       <h3>Please Select State</h3>
       <div class="row">
-        <div class="col-md-3 col-sm-4 col-6" *ngFor="let stateOption of states">
+        <div class="col-md-3 col-sm-4 col-xs-6 col-6" *ngFor="let stateOption of states">
           <div class="card" (click)="selectState(stateOption)" [ngClass]="{'selected': state === stateOption.name}">
             <div class="card-body text-center">
               <div>
@@ -65,7 +65,7 @@
     <div *ngIf="currentStep === 3">
       <h3>Please Select City</h3>
       <div class="row" *ngIf="state">
-        <div class="col-md-3 col-sm-4 col-6" *ngFor="let cityOption of cities[state]">
+        <div class="col-md-3 col-sm-4 col-xs-6 col-6" *ngFor="let cityOption of cities[state]">
           <div class="card" (click)="selectCity(cityOption)" [ngClass]="{'selected': city === cityOption.name}">
             <div class="card-body text-center">
               <div>
@@ -87,7 +87,7 @@
     <div *ngIf="currentStep === 4">
       <h3> We would love to know how you found us!</h3>
       <div class="row" *ngIf="state">
-        <div class="col-md-3 col-sm-4 col-6" *ngFor="let advertisementOptions of advertisements">
+        <div class="col-md-3 col-sm-4 col-xs-6 col-6" *ngFor="let advertisementOptions of advertisements">
           <div class="card" (click)="selectAdvertisement(advertisementOptions)" [ngClass]="{'selected': advertisement === advertisementOptions.name}">
             <div class="card-body text-center">
               <div>

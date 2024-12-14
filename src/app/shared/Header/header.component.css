@@ -1105,7 +1105,15 @@
   .navbar-default .navbar-nav>li>a {
     font-size: 14px;
   }
-
+  .navbar-default .navbar-nav>li>::after {
+    position: absolute;
+    top: 22px;
+    left: -3px;
+    content: "";
+    height: 40px;
+    width: 2px;
+    background-color: cadetblue;
+  }
   .pulse {
     margin-left: 2px;
     display: inline-block;

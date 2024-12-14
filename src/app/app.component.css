@@ -1,0 +1,55 @@
+.wait-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wait-overlay img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+
+.wait-image span {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  margin-top: 10px;
+  font-weight: bold;
+}
+/* Style for the Back to Top button */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: none;
+  background-color: #dfb43d;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s ease;
+  z-index: 9999;
+
+}
+
+/* Display when the button is visible */
+.back-to-top.show {
+  display: block;
+}
+
+/* Optionally, add hover effects */
+.back-to-top:hover {
+  background-color: #dfb43d;
+}

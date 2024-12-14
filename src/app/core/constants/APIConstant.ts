@@ -21,6 +21,7 @@ export const APIConstant = {
       'Category/GetContentByPageNameCategoryContentType',
     GetAllContentByCategoryAndContentType:
       'Category/GetAllContentByCategoryAndContentType',
+    getArticleBySearchText: 'Category/GetSearchArticles',
   },
   question: {
     getAllQuestionByCategory: 'Category/GetAllQuestionsByCategory',

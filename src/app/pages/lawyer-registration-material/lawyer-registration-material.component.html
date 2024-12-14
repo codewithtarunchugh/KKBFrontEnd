@@ -1,0 +1,510 @@
+<div class="container form-container" style="margin-top: 10px;">
+  <h2 class="text-center"><i class="fas fa-hands-helping"></i>&nbsp;&nbsp;Grow Your Legal Practices with KanoonKiBaat
+    Join
+    Now!!</h2>
+  <br />
+  <div class="col-md-8">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <mat-form-field >
+            <mat-label>First Name</mat-label>
+            <input matInput type="text" formControlName="firstName" placeholder="First Name" maxlength="20">
+            <mat-error *ngIf="userForm.get('firstName')?.invalid && userForm.get('firstName')?.touched">
+              First name is required and must be at least 2 characters long.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field>
+            <mat-label>Last Name</mat-label>
+            <input matInput type="text" formControlName="lastName" placeholder="Last Name" maxlength="20">
+            <mat-error *ngIf="userForm.get('lastName')?.invalid && userForm.get('lastName')?.touched">
+              Last name is required and must be at least 2 characters long.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <mat-form-field>
+            <mat-label>Mobile Number</mat-label>
+            <input matInput type="text" formControlName="mobileNumber" placeholder="Mobile Number" maxlength="10">
+            <mat-error *ngIf="userForm.get('mobileNumber')?.invalid && userForm.get('mobileNumber')?.touched">
+              Please enter a valid 10-digit mobile number.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field>
+            <mat-label>Profile Upload</mat-label>
+            <input matInput type="text" formControlName="profileUpload">
+            <mat-error *ngIf="userForm.get('profileUpload')?.invalid && userForm.get('profileUpload')?.touched">
+              Profile Upload is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email" placeholder="Email Address" maxlength="100">
+            <mat-error *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched">
+              Please enter a valid email address.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field>
+            <mat-label>Practice Year Since</mat-label>
+            <mat-select formControlName="practiceYear">
+              <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="userForm.get('practiceYear')?.invalid && userForm.get('practiceYear')?.touched">
+              Practice year is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <mat-form-field>
+            <mat-label>State</mat-label>
+            <mat-select formControlName="state">
+              <mat-option>Choose...</mat-option>
+            </mat-select>
+            <mat-error *ngIf="userForm.get('state')?.invalid && userForm.get('state')?.touched">
+              State is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field>
+            <mat-label>City</mat-label>
+            <mat-select formControlName="city">
+              <mat-option>Choose...</mat-option>
+            </mat-select>
+            <mat-error *ngIf="userForm.get('city')?.invalid && userForm.get('city')?.touched">
+              City is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <mat-form-field>
+            <mat-label>Language</mat-label>
+            <mat-select formControlName="language">
+              <mat-option>Choose...</mat-option>
+            </mat-select>
+            <mat-error *ngIf="userForm.get('language')?.invalid && userForm.get('language')?.touched">
+              Language is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field>
+            <mat-label>Specialization</mat-label>
+            <mat-select formControlName="specialization">
+              <mat-option>Choose...</mat-option>
+            </mat-select>
+            <mat-error *ngIf="userForm.get('specialization')?.invalid && userForm.get('specialization')?.touched">
+              Specialization is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <textarea matInput rows="2" placeholder="Address..." formControlName="address" maxlength="200"></textarea>
+          <mat-error *ngIf="userForm.get('address')?.invalid && userForm.get('address')?.touched">
+            Address is required.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="mb-3">
+        <mat-form-field>
+          <mat-label>About</mat-label>
+          <textarea matInput rows="3" placeholder="About..." formControlName="about" maxlength="500"></textarea>
+          <mat-error *ngIf="userForm.get('about')?.invalid && userForm.get('about')?.touched">
+            About is required.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <mat-form-field>
+            <mat-label>Pincode</mat-label>
+            <input matInput type="text" formControlName="pincode" placeholder="Pincode" maxlength="6">
+            <mat-error *ngIf="userForm.get('pincode')?.invalid && userForm.get('pincode')?.touched">
+              Pincode is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field>
+            <mat-label>Enrollment Number</mat-label>
+            <input matInput type="text" formControlName="enrollmentNumber" placeholder="Enrollment Number" maxlength="20">
+            <mat-error *ngIf="userForm.get('enrollmentNumber')?.invalid && userForm.get('enrollmentNumber')?.touched">
+              Enrollment Number is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field>
+            <mat-label>Consultancy Fee</mat-label>
+            <mat-select formControlName="consultancyFee">
+              <mat-option>Choose...</mat-option>
+            </mat-select>
+            <mat-error *ngIf="userForm.get('consultancyFee')?.invalid && userForm.get('consultancyFee')?.touched">
+              Consultancy Fee is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <mat-form-field>
+            <mat-label>Practice Areas</mat-label>
+            <input matInput type="text" formControlName="practiceAreas" placeholder="Practice areas" maxlength="100">
+            <mat-error *ngIf="userForm.get('practiceAreas')?.invalid && userForm.get('practiceAreas')?.touched">
+              Practice areas are required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field>
+            <mat-label>Courts</mat-label>
+            <mat-select formControlName="courts" multiple>
+                <mat-option [value]="topping" *ngFor="let topping of courtList">{{topping}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="userForm.get('courts')?.invalid && userForm.get('courts')?.touched">
+              Courts is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password" placeholder="Password" maxlength="20">
+            <mat-error *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.touched">
+              Password is required and must be at least 6 characters long.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field>
+            <mat-label>Confirm Password</mat-label>
+            <input matInput type="password" formControlName="confirmPassword" placeholder="Confirm Password" maxlength="20">
+            <mat-error *ngIf="userForm.get('confirmPassword')?.invalid && userForm.get('confirmPassword')?.touched">
+              Confirm password is required and must match the password.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <mat-checkbox formControlName="terms">
+          Agree to terms and conditions
+        </mat-checkbox>
+        <mat-error *ngIf="userForm.get('terms')?.invalid && userForm.get('terms')?.touched">
+          You must agree to the terms and conditions.
+        </mat-error>
+      </div>
+
+      <button mat-raised-button type="submit" [disabled]="userForm.invalid">Submit</button>
+    </form>
+
+  </div>
+  <!-- Right Side (Attractive Message with Icon) -->
+  <div class="col-md-4">
+    <!-- Additional Attractive Message -->
+    <div class="text-center mt-5">
+      <i class="fas fa-gavel fa-3x"></i> <!-- Gavel Icon -->
+      <h3>Unlock Your Legal Success</h3>
+      <p>Join KanoonKiBaat and unlock new opportunities. With increased visibility, a steady stream of clients, and a
+        platform designed for lawyers, your success is just a step away!</p>
+    </div>
+    <!-- Combined Steps Section with Icons -->
+    <div class="text-center">
+      <!-- Step 1: Clients Search for Lawyers -->
+      <div class="step">
+        <i class="fas fa-search fa-3x"></i> <!-- Search Icon -->
+        <h3>Step 1: Clients Search for Lawyers</h3>
+        <p>Clients are able to search for lawyers based on specialization, location, or case type. By joining
+          KanoonKiBaat, you ensure that clients find you easily.</p>
+      </div>
+
+      <!-- Step 2: Clients Contact Lawyers -->
+      <div class="step">
+        <i class="fas fa-phone-alt fa-3x"></i> <!-- Phone Icon -->
+        <h3>Step 2: Clients Contact You</h3>
+        <p>Clients directly reach out to you through your profile on KanoonKiBaat. Communicate effectively and build a
+          rapport that turns inquiries into successful cases.</p>
+      </div>
+
+      <!-- Step 3: We Facilitate Communication -->
+      <div class="step">
+        <i class="fas fa-comments fa-3x"></i> <!-- Comments Icon -->
+        <h3>Step 3: We Facilitate Communication</h3>
+        <p>Once you’re in contact, we ensure seamless communication between you and the client. KanoonKiBaat makes it
+          easy for you to connect and move forward with cases.</p>
+      </div>
+    </div>
+
+
+  </div>
+
+  <br />
+  <div class="col-sm-12">
+    <br />
+    <h2 class="text-center"><i class="fas fa-lightbulb"></i>&nbsp;&nbsp;Everything You Need to Know About KanoonKiBaat
+    </h2>
+    <br />
+
+    <div class="faq-wrapper masonry-layout" style="column-count: 1 !important;">
+      <!-- FAQ 1 -->
+      <div class="masonry-item" style="background:#ffffff;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">What exactly is KanoonKiBaat?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">KanoonKiBaat is India's premier platform that connects clients with trusted legal
+              professionals. We help people find the right lawyer by offering an easy-to-use platform where clients can
+              ask legal questions, access valuable legal resources, and receive expert advice from highly skilled
+              lawyers. Whether you need quick legal advice or full legal representation, we have you covered!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ 2 -->
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">Is KanoonKiBaat a law firm?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">No, we are not a law firm. KanoonKiBaat is a trusted legal tech platform designed to
+              connect clients with lawyers, not a law firm itself. We provide an unbiased and transparent space for
+              clients to find legal help by reaching out to the best lawyers suited for their needs.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ 3 -->
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">Can I list myself on KanoonKiBaat?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">Yes! As a lawyer, you can register on KanoonKiBaat and showcase your expertise. However,
+              instead of actively advertising your services, clients will come to you with their legal questions or
+              cases, and you will have the chance to provide guidance and solutions.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ 4 -->
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">How does KanoonKiBaat actually work?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">It’s simple!<br />
+              1. Clients search for lawyers by specialization, location, or case type.<br />
+              2. Clients contact lawyers directly through their profiles.<br />
+              3. After that, we help facilitate communication, so clients and lawyers can connect and move forward with
+              their cases.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ 5 -->
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">Why should I sign up with KanoonKiBaat?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">By signing up, you gain access to a larger pool of potential clients who are actively
+              seeking legal help. Additionally, by answering public queries, you can enhance your visibility, build your
+              reputation, and even generate reviews. KanoonKiBaat ensures more opportunities for engagement compared to
+              traditional methods of client acquisition.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ 6 -->
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">Is this a lawyer referral service?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">No, KanoonKiBaat is not a referral service. We are a platform that enables clients to
+              independently find and contact lawyers based on their legal needs. Clients are in control of selecting
+              their lawyer, ensuring the perfect match for their case.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ 7 -->
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">Am I eligible to sign up?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">If you are a registered and practicing lawyer with the Bar Council of India, you can sign
+              up and start offering your legal expertise on our platform. We welcome lawyers from a range of legal
+              specialties.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ 8 -->
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">How do I sign up?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">Signing up is easy! Simply fill out the form on this page with your professional details,
+              and we’ll activate your profile once everything is verified. You'll be ready to connect with clients who
+              need your expertise!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ 9 -->
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">Are there any costs to join?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">No, there are absolutely no costs involved to sign up and join KanoonKiBaat. It’s
+              completely free for lawyers to be part of our platform, and there are no hidden fees.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ 10 -->
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">Can I change the services I offer?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">Absolutely! You can update your listed services anytime based on the changing needs of
+              your practice. There’s no commitment, and we make it easy for you to adjust your profile at your
+              convenience.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Why register with KanoonKiBaat -->
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">Why should I register with KanoonKiBaat as a lawyer?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">By registering on KanoonKiBaat, you gain exposure to a wide range of clients looking for
+              legal assistance. We connect lawyers with clients directly, giving you the opportunity to showcase your
+              expertise and grow your practice.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Benefits of being listed -->
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">What benefits will I get by being listed on KanoonKiBaat?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">You will have access to legal queries posted by clients, an opportunity to provide
+              consultations, and potential clients who are actively looking for a lawyer. The platform helps increase
+              your visibility and credibility, driving more clients to your practice.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- How to sign up -->
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">How do I sign up and create my profile as a lawyer?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">Simply fill out the registration form on our platform, providing details about your
+              practice, areas of expertise, and qualifications. After submitting, your profile will be reviewed and
+              activated so you can start connecting with clients.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Qualifications required -->
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">What qualifications do I need to join KanoonKiBaat?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">To register, you must be a practicing lawyer who is currently registered with the Bar
+              Council of India. You can list areas of law that you specialize in to help clients find the best fit for
+              their legal needs.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Is there a fee to register -->
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">Is there a fee to register as a lawyer on KanoonKiBaat?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">No, there is no fee to register as a lawyer. The registration is completely free, and you
+              can start using the platform to connect with clients right away.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Can I update my profile -->
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">Can I update my profile and services anytime?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">Yes! You can easily update your profile at any time to reflect changes in your practice
+              areas, experience, or any other information that may attract more clients.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- How do I get clients -->
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">How will I get clients through KanoonKiBaat?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">Clients post their legal queries or cases on KanoonKiBaat, and you can choose to respond
+              or offer your services. Based on your expertise and ratings, clients will reach out to you directly for
+              consultations.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Do I have to accept all clients -->
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">Do I have to take on every client who contacts me through the platform?
+          </div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">No, you have the freedom to accept or decline any client request. You can select clients
+              that match your expertise and workload.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- How to stand out -->
+      <div class="masonry-item" style="background:#FFF;" itemprop="mainEntity">
+        <div class="faq-item">
+          <div class="faq-title" itemprop="name">How do I ensure my profile stands out to potential clients?</div>
+          <div class="faq-content" itemprop="acceptedAnswer">
+            <p itemprop="text">Ensure your profile is complete with detailed information about your practice,
+              experience, and areas of expertise. Adding client testimonials and maintaining an active profile will help
+              you attract more clients.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

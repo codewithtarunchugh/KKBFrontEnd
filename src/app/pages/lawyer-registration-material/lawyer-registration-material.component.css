@@ -44,24 +44,14 @@ input[type="checkbox"]:checked::after {
 }
 .faq-title i
 {
-  color:#303030 !important;}
+  color:white !important;}
   .faq-item .faq-title
 {
-  color:#303030!important;
-  background-color: #cccecf!important;
+  color:white !important;
+  background-color: #393737!important;
   font-weight: bold!important;
-  min-height: 40px!important;
-  padding: 10px 10px!important;
-}
-/* Override padding for xs screens */
-@media (max-width: 576px) {
-  .faq-item .faq-title {
-    color:#303030!important;
-    background-color: #cccecf!important;
-    font-weight: bold!important;
-    min-height: 40px!important;
-    padding: 10px 0px!important;;
-  }
+  min-height: 40px!important;;
+  padding: 10px 10px!important;;
 }
 /* Add the caret icon to the FAQ title */
 .faq-title::after {
@@ -95,7 +85,7 @@ input[type="checkbox"]:checked::after {
 
 .col-md-4 {
   background-color: #cccecf;
-  padding: 8px;
+  padding: 20px;
   border-radius: 8px;
 }
 .row .col-md-4
@@ -121,7 +111,6 @@ background-color: white!important;
   color: #333;
   font-size: 1.2rem;
   text-align: justify;
-  padding: 10px;
 }
 .step {
   margin-bottom: 20px;
@@ -142,10 +131,35 @@ p {
   color: #6c757d;
   margin-top: 10px;
 }
-.row .border-box
-{
-  border-radius: 4px!important;
+
+
+mat-form-field .mat-input-element {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  width:400px!important;
 }
+mat-form-field .mat-input-element.textarea
+{
+  width:780px!important;
 
+}
+form{
+  line-height: 35px!important;
+}
+mat-error
+{
+  white-space: nowrap !important;
+  padding-left: 0px!important;
+  margin-left: 0px!important;
+  padding: 0 0px!important;
 
-
+}
+mat-form-field
+{
+  padding: 0 0px!important;
+}
+.mat-mdc-form-field-error-wrapper
+{
+  padding: 0px!important;
+  padding: 0 0px!important;
+}

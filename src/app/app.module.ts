@@ -1,6 +1,6 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/Header/header.component';
@@ -32,6 +32,19 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { LocalDataServiceService } from './core/services/LocalDataService/local-data-service.service';
 import { TokenInterceptor } from './interceptor/token.interceptor';
 import { ErrorInterceptor } from './interceptor/error.interceptor';
+import { LoadingInterceptor } from './interceptor/loading.interceptor';
+import { SearchArticlesComponent } from './pages/search-articles/search-articles.component';
+import { EnquiryComponent } from './pages/enquiry/enquiry.component';
+import { AskQuestionComponent } from './pages/ask-question/ask-question.component';
+import { LawyerRegistrationComponent } from './pages/lawyer-registration/lawyer-registration.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
+import { LawyerRegistrationMaterialComponent } from './pages/lawyer-registration-material/lawyer-registration-material.component';
 
 @NgModule({
   declarations: [
@@ -59,8 +72,25 @@ import { ErrorInterceptor } from './interceptor/error.interceptor';
     LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,
+    SearchArticlesComponent,
+    EnquiryComponent,
+    AskQuestionComponent,
+    LawyerRegistrationComponent,
+    LawyerRegistrationMaterialComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [
+    BrowserModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatButtonModule, // Material button
+    MatInputModule, // Material input
+    MatSelectModule, // Material select dropdown
+    MatFormFieldModule, // Material form field
+    MatCheckboxModule,
+  ],
   providers: [
     LocalDataServiceService,
     {
@@ -71,6 +101,11 @@ import { ErrorInterceptor } from './interceptor/error.interceptor';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
       multi: true,
     },
   ],

@@ -18,6 +18,11 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { authGuard } from './core/guards/auth.guard';
+import { SearchArticlesComponent } from './pages/search-articles/search-articles.component';
+import { EnquiryComponent } from './pages/enquiry/enquiry.component';
+import { AskQuestionComponent } from './pages/ask-question/ask-question.component';
+import { LawyerRegistrationComponent } from './pages/lawyer-registration/lawyer-registration.component';
+import { LawyerRegistrationMaterialComponent } from './pages/lawyer-registration-material/lawyer-registration-material.component';
 
 const routes: Routes = [
   {
@@ -70,6 +75,30 @@ const routes: Routes = [
         data: { roles: ['Admin'] },
       },
       {
+        path: 'enquiry',
+        component: EnquiryComponent,
+        canActivate: [authGuard],
+        data: { roles: ['Admin'] },
+      },
+      {
+        path: 'lawyer-registration',
+        component: LawyerRegistrationComponent,
+        canActivate: [authGuard],
+        data: { roles: ['Admin'] },
+      },
+      {
+        path: 'lawyer-registration-material',
+        component: LawyerRegistrationMaterialComponent,
+        canActivate: [authGuard],
+        data: { roles: ['Admin'] },
+      },
+      {
+        path: 'ask-question',
+        component: AskQuestionComponent,
+        canActivate: [authGuard],
+        data: { roles: ['Admin'] },
+      },
+      {
         path: 'signup',
         component: SignupComponent,
         canActivate: [authGuard],
@@ -90,6 +119,12 @@ const routes: Routes = [
       {
         path: 'search-question/:searchQuery',
         component: SearchQuestionComponent,
+        canActivate: [authGuard],
+        data: { roles: ['Admin'] },
+      },
+      {
+        path: 'search-articles/:searchQuery',
+        component: SearchArticlesComponent,
         canActivate: [authGuard],
         data: { roles: ['Admin'] },
       },

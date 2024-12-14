@@ -8,6 +8,7 @@ import { UserService } from 'src/app/core/services/user/user.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
+  searchQuery = '';
   constructor(private userService: UserService, private router: Router) {}
   logout() {
     this.userService.logout();

@@ -1,14 +1,10 @@
 <header>
   <div class="search-container">
-    <form autocomplete="off" action="https://kanoonkibaat.com/lawyers" method="get" name="home_search">
-      <div class="input-group" id="sea" >
-        <input type="text" name="q" id="search_home" class="form-control"
-          onkeyup="if (!window.__cfRLUnblockHandlers) return false; autocomplet()" autofocus
-          placeholder="Search by Lawyer / City / IPC Section etc.." data-cf-modified-05d0d2aae7ca0399330e2962->
+    <form autocomplete="off" name="home_search">
+      <div class="input-group" id="sea">
+        <input type="text" name="q" id="search_home"  [(ngModel)]="searchQuery"  class="form-control">
         <span class="input-group-btn">
-          <button class="button button-default" type="button" style="padding: 5px 10px;"
-            onClick="if (!window.__cfRLUnblockHandlers) return false; document.forms.home_search.submit();"
-            data-cf-modified-05d0d2aae7ca0399330e2962-><span class="icon_search"
+          <button class="button button-default" type="submit"  [routerLink]="searchQuery ? ['/search-question'] + '/' + searchQuery : ['/search-articles/all']" style="padding: 5px 10px;"><span class="icon_search"
               style="font-weight:bold; font-size:17px;"></span></button>
         </span>
       </div>
@@ -23,9 +19,9 @@
               Lawyer</span></a></li>
         <li class="list-group-item"><a href="criminal-lawyers"><span>Find a <strong>Criminal Defence</strong>
               Lawyer</span></a></li>
-        <li class="list-group-item"><a href="/indian-kanoon/law/ipc"><span>See <strong>IPC
+        <li class="list-group-item"><a routerLink="/indian-kanoon/law/ipc"><span>See <strong>IPC
                 Sections</strong></span></a></li>
-        <li class="list-group-item"><a href="ask-a-free-question"><span>Ask a <strong>Free
+        <li class="list-group-item"><a routerLink="ask-question"><span>Ask a <strong>Free
                 Question</strong></span></a></li>
       </ul>
     </form>
@@ -33,31 +29,58 @@
   <div class="top-bar border-bottom-default">
     <div class="container">
       <div class="row">
-        <div class="col-sm-2" style="float:left;">
-          <img src="assets/images/change_language.png" alt="KanoonKiBaat"
-            style="height:20px; float:left; margin-top:10px;">
-          <select name="langctrl" class="form-control"
-            style="border-radius: 0;border:none;padding:0;background:#f6f6f6;width:auto;"
-            onchange="if (!window.__cfRLUnblockHandlers) return false; if (this.value) window.location.href=this.value"
-            data-cf-modified-05d0d2aae7ca0399330e2962->
-            <option value hidden>Languages</option>
-            <option value="https://hindi.kanoonkibaat.com/">Hindi</option>
-            <option value="https://tamil.kanoonkibaat.com/">Tamil</option>
-            <option value="https://bangla.kanoonkibaat.com/">Bangla</option>
-            <option value="https://marathi.kanoonkibaat.com/">Marathi</option>
-            <option value="https://kannada.kanoonkibaat.com/">Kannada</option>
-            <option value="https://telugu.kanoonkibaat.com/">Telugu</option>
-            <option value="https://malayalam.kanoonkibaat.com/">Malayalam</option>
-          </select>
-        </div>
-        <div class="col-sm-10 text-right">
+        <div class="col-sm-12">
           <ul class="list-inline">
-            <li><a href="/indian-kanoon">Indian Kanoon</a></li>
-            <li><a href="/indian-kanoon/law/ipc">Indian Penal Code</a></li>
-            <li><a href="ask-a-free-question">Ask a Free Question</a></li>
-            <li><a href="free-legal-advice-phone">Talk To A Lawyer</a></li>
-            <li><a href="free-legal-advice">Free legal advice</a></li>
-            <li><a href="lawyer-signup">Lawyer Signup</a></li>
+            <li>
+              <a class="mob_num" style="cursor:pointer" href="tel:09266363588"><span class="top-mobile"><i style="font-size: 18px;"
+                    class="fa fa-phone"></i></span><b style="font-size: 18px;"> 09266363588</b></a>
+            </li>
+            <li><a class="mob_email" style="cursor:pointer" href="mailto:legal@kanoonkibaat.com"><span class="top-mobile"><i
+                    class="fa fa-envelope"></i></span>&nbsp;
+                <b>legal&#64;kanoonkibaat.com</b></a></li>
+
+            <li><a href="/indian-kanoon"><i class="fa fa-book"></i> &nbsp; Indian Kanoon</a></li>
+            <li><a routerLink="/indian-kanoon/law/ipc"><i class="fa fa-legal"></i>&nbsp; Indian Penal Code</a></li>
+            <li><a routerLink="/ask-question"><i class="far fa-comment-dots"></i>&nbsp; Ask a Free Question</a></li>
+            <li><a routerLink="/enquiry"><i class="fa fa-phone"></i>&nbsp; Talk To A Lawyer</a></li>
+            <li><a href="/lawyer-registration"><i class="fas fa-user-circle"></i> &nbsp; Lawyer Signup</a></li>
+            <li><a href="https://www.facebook.com" target="_blank" >
+              <svg  width="20" height="20" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true" focusable="false">
+                <path
+                  d="M12 2C6.5 2 2 6.5 2 12c0 5 3.7 9.1 8.4 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7C18.3 21.1 22 17 22 12c0-5.5-4.5-10-10-10z">
+                </path>
+              </svg></a>&nbsp;
+              <a href="https://api.whatsapp.com/send/?phone=919266363588&text&type=phone_number&app_absent=0" target="_blank" >
+              <svg  width="20" height="20" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true" focusable="false">
+                <path
+                  d="M 12.011719 2 C 6.5057187 2 2.0234844 6.478375 2.0214844 11.984375 C 2.0204844 13.744375 2.4814687 15.462563 3.3554688 16.976562 L 2 22 L 7.2324219 20.763672 C 8.6914219 21.559672 10.333859 21.977516 12.005859 21.978516 L 12.009766 21.978516 C 17.514766 21.978516 21.995047 17.499141 21.998047 11.994141 C 22.000047 9.3251406 20.962172 6.8157344 19.076172 4.9277344 C 17.190172 3.0407344 14.683719 2.001 12.011719 2 z M 12.009766 4 C 14.145766 4.001 16.153109 4.8337969 17.662109 6.3417969 C 19.171109 7.8517969 20.000047 9.8581875 19.998047 11.992188 C 19.996047 16.396187 16.413812 19.978516 12.007812 19.978516 C 10.674812 19.977516 9.3544062 19.642812 8.1914062 19.007812 L 7.5175781 18.640625 L 6.7734375 18.816406 L 4.8046875 19.28125 L 5.2851562 17.496094 L 5.5019531 16.695312 L 5.0878906 15.976562 C 4.3898906 14.768562 4.0204844 13.387375 4.0214844 11.984375 C 4.0234844 7.582375 7.6067656 4 12.009766 4 z M 8.4765625 7.375 C 8.3095625 7.375 8.0395469 7.4375 7.8105469 7.6875 C 7.5815469 7.9365 6.9355469 8.5395781 6.9355469 9.7675781 C 6.9355469 10.995578 7.8300781 12.182609 7.9550781 12.349609 C 8.0790781 12.515609 9.68175 15.115234 12.21875 16.115234 C 14.32675 16.946234 14.754891 16.782234 15.212891 16.740234 C 15.670891 16.699234 16.690438 16.137687 16.898438 15.554688 C 17.106437 14.971687 17.106922 14.470187 17.044922 14.367188 C 16.982922 14.263188 16.816406 14.201172 16.566406 14.076172 C 16.317406 13.951172 15.090328 13.348625 14.861328 13.265625 C 14.632328 13.182625 14.464828 13.140625 14.298828 13.390625 C 14.132828 13.640625 13.655766 14.201187 13.509766 14.367188 C 13.363766 14.534188 13.21875 14.556641 12.96875 14.431641 C 12.71875 14.305641 11.914938 14.041406 10.960938 13.191406 C 10.218937 12.530406 9.7182656 11.714844 9.5722656 11.464844 C 9.4272656 11.215844 9.5585938 11.079078 9.6835938 10.955078 C 9.7955938 10.843078 9.9316406 10.663578 10.056641 10.517578 C 10.180641 10.371578 10.223641 10.267562 10.306641 10.101562 C 10.389641 9.9355625 10.347156 9.7890625 10.285156 9.6640625 C 10.223156 9.5390625 9.737625 8.3065 9.515625 7.8125 C 9.328625 7.3975 9.131125 7.3878594 8.953125 7.3808594 C 8.808125 7.3748594 8.6425625 7.375 8.4765625 7.375 z">
+                </path>
+              </svg></a>&nbsp;<a href="https://www.youtube.com" target="_blank" >
+              <svg  width="20" height="20" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true" focusable="false">
+                <path
+                  d="M21.8,8.001c0,0-0.195-1.378-0.795-1.985c-0.76-0.797-1.613-0.801-2.004-0.847c-2.799-0.202-6.997-0.202-6.997-0.202 h-0.009c0,0-4.198,0-6.997,0.202C4.608,5.216,3.756,5.22,2.995,6.016C2.395,6.623,2.2,8.001,2.2,8.001S2,9.62,2,11.238v1.517 c0,1.618,0.2,3.237,0.2,3.237s0.195,1.378,0.795,1.985c0.761,0.797,1.76,0.771,2.205,0.855c1.6,0.153,6.8,0.201,6.8,0.201 s4.203-0.006,7.001-0.209c0.391-0.047,1.243-0.051,2.004-0.847c0.6-0.607,0.795-1.985,0.795-1.985s0.2-1.618,0.2-3.237v-1.517 C22,9.62,21.8,8.001,21.8,8.001z M9.935,14.594l-0.001-5.62l5.404,2.82L9.935,14.594z">
+                </path>
+              </svg></a>&nbsp;
+              <a href="https://www.instagram.com" target="_blank" >
+              <svg  width="20" height="20" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true" focusable="false">
+                <path
+                  d="M12,4.622c2.403,0,2.688,0.009,3.637,0.052c0.877,0.04,1.354,0.187,1.671,0.31c0.42,0.163,0.72,0.358,1.035,0.673 c0.315,0.315,0.51,0.615,0.673,1.035c0.123,0.317,0.27,0.794,0.31,1.671c0.043,0.949,0.052,1.234,0.052,3.637 s-0.009,2.688-0.052,3.637c-0.04,0.877-0.187,1.354-0.31,1.671c-0.163,0.42-0.358,0.72-0.673,1.035 c-0.315,0.315-0.615,0.51-1.035,0.673c-0.317,0.123-0.794,0.27-1.671,0.31c-0.949,0.043-1.233,0.052-3.637,0.052 s-2.688-0.009-3.637-0.052c-0.877-0.04-1.354-0.187-1.671-0.31c-0.42-0.163-0.72-0.358-1.035-0.673 c-0.315-0.315-0.51-0.615-0.673-1.035c-0.123-0.317-0.27-0.794-0.31-1.671C4.631,14.688,4.622,14.403,4.622,12 s0.009-2.688,0.052-3.637c0.04-0.877,0.187-1.354,0.31-1.671c0.163-0.42,0.358-0.72,0.673-1.035 c0.315-0.315,0.615-0.51,1.035-0.673c0.317-0.123,0.794-0.27,1.671-0.31C9.312,4.631,9.597,4.622,12,4.622 M12,3 C9.556,3,9.249,3.01,8.289,3.054C7.331,3.098,6.677,3.25,6.105,3.472C5.513,3.702,5.011,4.01,4.511,4.511 c-0.5,0.5-0.808,1.002-1.038,1.594C3.25,6.677,3.098,7.331,3.054,8.289C3.01,9.249,3,9.556,3,12c0,2.444,0.01,2.751,0.054,3.711 c0.044,0.958,0.196,1.612,0.418,2.185c0.23,0.592,0.538,1.094,1.038,1.594c0.5,0.5,1.002,0.808,1.594,1.038 c0.572,0.222,1.227,0.375,2.185,0.418C9.249,20.99,9.556,21,12,21s2.751-0.01,3.711-0.054c0.958-0.044,1.612-0.196,2.185-0.418 c0.592-0.23,1.094-0.538,1.594-1.038c0.5-0.5,0.808-1.002,1.038-1.594c0.222-0.572,0.375-1.227,0.418-2.185 C20.99,14.751,21,14.444,21,12s-0.01-2.751-0.054-3.711c-0.044-0.958-0.196-1.612-0.418-2.185c-0.23-0.592-0.538-1.094-1.038-1.594 c-0.5-0.5-1.002-0.808-1.594-1.038c-0.572-0.222-1.227-0.375-2.185-0.418C14.751,3.01,14.444,3,12,3L12,3z M12,7.378 c-2.552,0-4.622,2.069-4.622,4.622S9.448,16.622,12,16.622s4.622-2.069,4.622-4.622S14.552,7.378,12,7.378z M12,15 c-1.657,0-3-1.343-3-3s1.343-3,3-3s3,1.343,3,3S13.657,15,12,15z M16.804,6.116c-0.596,0-1.08,0.484-1.08,1.08 s0.484,1.08,1.08,1.08c0.596,0,1.08-0.484,1.08-1.08S17.401,6.116,16.804,6.116z">
+                </path>
+              </svg></a>&nbsp;
+              <a href="https://www.x.com" target="_blank" >
+              <svg  width="20" height="20" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true" focusable="false">
+                <path
+                  d="M13.982 10.622 20.54 3h-1.554l-5.693 6.618L8.745 3H3.5l6.876 10.007L3.5 21h1.554l6.012-6.989L15.868 21h5.245l-7.131-10.378Zm-2.128 2.474-.697-.997-5.543-7.93H8l4.474 6.4.697.996 5.815 8.318h-2.387l-4.745-6.787Z">
+                </path>
+              </svg></a>
+
+            </li>
+
           </ul>
         </div>
       </div>
@@ -74,80 +97,80 @@
         <a href class="search-button search-button-mobile visible-xs"><span
             class="fa fa-search fa-flip-horizontal"></span></a>
         <a class="navbar-brand text-hide hidden-xs" href="/index"><img src="assets/img/logo.png"
-            style="width:211px; height:58px;" alt="KanoonKiBaat" /></a>
+            style="width:260px; height:58px;" alt="KanoonKiBaat" /></a>
         <a class="navbar-brand text-hide visible-xs" href="/index" style="margin-left:30px !important;"><img
-            src="assets/img/logo-mobile.png" style="width:140px; height:24px;" alt="KanoonKiBaat" /></a>
+            src="assets/img/logo.png"  alt="KanoonKiBaat" /></a>
       </div>
       <div class="collapse navbar-collapse" id="header-nav">
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown yamm-fw">
             <a href="lawyers" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-              aria-expanded="false">FIND A LAWYER</a>
+              aria-expanded="false">FIND A LAWYER <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li>
                 <div class="yamm-content">
                   <div class="row">
                     <div class="col-sm-2">
-                      <span class="dropmenu-title">Personal / Family</span>
+                      <span class="dropmenu-title"><i class="fa fa-users"></i>&nbsp;Personal / Family</span>
                       <ul class="list-unstyled" style="margin-top:20px;">
-                        <li><a href="divorce-lawyers">Divorce</a></li>
-                        <li><a href="family-lawyers">Family Dispute</a></li>
-                        <li><a href="child-custody-lawyers">Child Custody</a></li>
-                        <li><a href="muslim-law-lawyers">Muslim Law</a></li>
-                        <li><a href="medical-negligence-lawyers">Medical Negligence</a></li>
-                        <li><a href="motor-accident-lawyers">Motor Accident</a></li>
+                        <li><a href="divorce-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Divorce</a></li>
+                        <li><a href="family-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Family Dispute</a></li>
+                        <li><a href="child-custody-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Child Custody</a></li>
+                        <li><a href="muslim-law-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Muslim Law</a></li>
+                        <li><a href="medical-negligence-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Medical Negligence</a></li>
+                        <li><a href="motor-accident-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Motor Accident</a></li>
                       </ul>
                     </div>
                     <div class="col-sm-2">
-                      <span class="dropmenu-title">Criminal / Property</span>
+                      <span class="dropmenu-title"><i class="fa fa-gavel"></i>&nbsp;Criminal / Property</span>
                       <ul class="list-unstyled" style="margin-top:20px;">
-                        <li><a href="criminal-lawyers">Criminal</a></li>
-                        <li><a href="property-lawyers">Property</a></li>
-                        <li><a href="landlordtenant-lawyers">Landlord / Tenant</a></li>
-                        <li><a href="cyber-crime-lawyers">Cyber Crime</a></li>
-                        <li><a href="wills-trusts-lawyers">Wills / Trusts</a></li>
-                        <li><a href="labour-service-lawyers">Labour & Service</a></li>
+                        <li><a href="criminal-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Criminal</a></li>
+                        <li><a href="property-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Property</a></li>
+                        <li><a href="landlordtenant-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Landlord / Tenant</a></li>
+                        <li><a href="cyber-crime-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Cyber Crime</a></li>
+                        <li><a href="wills-trusts-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Wills / Trusts</a></li>
+                        <li><a href="labour-service-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Labour & Service</a></li>
                       </ul>
                     </div>
                     <div class="col-sm-2">
-                      <span class="dropmenu-title">Civil / Debt Matters</span>
+                      <span class="dropmenu-title"><i class="fa fa-balance-scale"></i>&nbsp;Civil / Debt Matters</span>
                       <ul class="list-unstyled" style="margin-top:20px;">
-                        <li><a href="documentation-lawyers">Documentation</a></li>
-                        <li><a href="consumer-court-lawyers">Consumer Court</a></li>
-                        <li><a href="civil-lawyers">Civil</a></li>
-                        <li><a href="cheque-bounce-lawyers">Cheque Bounce</a></li>
-                        <li><a href="recovery-lawyers">Recovery</a></li>
+                        <li><a href="documentation-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Documentation</a></li>
+                        <li><a href="consumer-court-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Consumer Court</a></li>
+                        <li><a href="civil-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Civil</a></li>
+                        <li><a href="cheque-bounce-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Cheque Bounce</a></li>
+                        <li><a href="recovery-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Recovery</a></li>
                       </ul>
                     </div>
                     <div class="col-sm-2">
-                      <span class="dropmenu-title">Corporate Law</span>
+                      <span class="dropmenu-title"><i class="fa fa-building"></i>&nbsp;Corporate Law</span>
                       <ul class="list-unstyled" style="margin-top:20px;">
-                        <li><a href="arbitration-lawyers">Arbitration</a></li>
-                        <li><a href="copyright-patent-trademark-lawyers">Trademark & Copyright</a></li>
-                        <li><a href="customs-central-excise-lawyers">Customs & Central Excise</a></li>
-                        <li><a href="startup-lawyers">Startup</a></li>
-                        <li><a href="banking-finance-lawyers">Banking / Finance</a></li>
-                        <li><a href="gst-lawyers">GST</a></li>
-                        <li><a href="corporate-lawyers">Corporate</a></li>
-                        <li><a href="tax-lawyers">Tax</a></li>
+                        <li><a href="arbitration-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Arbitration</a></li>
+                        <li><a href="copyright-patent-trademark-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Trademark & Copyright</a></li>
+                        <li><a href="customs-central-excise-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Customs & Central Excise</a></li>
+                        <li><a href="startup-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Startup</a></li>
+                        <li><a href="banking-finance-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Banking / Finance</a></li>
+                        <li><a href="gst-lawyers"><i class="fa fa-angle-right"></i>&nbsp;GST</a></li>
+                        <li><a href="corporate-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Corporate</a></li>
+                        <li><a href="tax-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Tax</a></li>
                       </ul>
                     </div>
                     <div class="col-sm-2">
-                      <span class="dropmenu-title">Others</span>
+                      <span class="dropmenu-title"><i class="fa fa-ellipsis-h"></i>&nbsp;Others</span>
                       <ul class="list-unstyled" style="margin-top:20px;">
-                        <li><a href="armed-forces-tribunal-lawyers">Armed Forces Tribunal</a></li>
-                        <li><a href="supreme-court-lawyers">Supreme Court</a></li>
-                        <li><a href="insurance-lawyers">Insurance</a></li>
-                        <li><a href="immigration-lawyers">Immigration</a></li>
-                        <li><a href="international-law-lawyers">International Law</a></li>
+                        <li><a href="armed-forces-tribunal-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Armed Forces Tribunal</a></li>
+                        <li><a href="supreme-court-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Supreme Court</a></li>
+                        <li><a href="insurance-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Insurance</a></li>
+                        <li><a href="immigration-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Immigration</a></li>
+                        <li><a href="international-law-lawyers"><i class="fa fa-angle-right"></i>&nbsp;International Law</a></li>
                       </ul>
                     </div>
                     <div class="col-sm-2">
-                      <span class="dropmenu-title">Talk to a Lawyer</span>
+                      <span class="dropmenu-title"><i class="fa fa-phone"></i>&nbsp; Talk to a Lawyer</span>
                       <ul class="list-unstyled" style="margin-top:20px;">
                         <li>
                           <p>Need help to find the right lawyer ?</p>
-                          <a href="free-legal-advice-phone" class="button button-default">Start Here</a>
+                          <a routerLink="/enquiry" class="button button-default"><i class="fa fa-phone"></i>&nbsp;Start Here</a>
                         </li>
                       </ul>
                     </div>
@@ -158,89 +181,89 @@
           </li>
           <li class="dropdown yamm-fw">
             <a href class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-              aria-expanded="false">LEGAL ADVICE</a>
+              aria-expanded="false">LEGAL ADVICE <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li>
                 <div class="yamm-content">
                   <div class="row">
-                    <div class="col-sm-2">
-                      <span class="dropmenu-title">Answered Questions</span>
+                    <div class="col-sm-2" style="white-space: nowrap;">
+                      <span class="dropmenu-title"><i class="fa fa-check-circle"></i>&nbsp;Answered Questions</span>
                       <ul class="list-unstyled" style="margin-top:20px;">
-                        <li><a routerLink="/question-list/39">Divorce Law Queries</a></li>
-                        <li><a routerLink="/question-list/77">Property Law Queries</a></li>
-                        <li><a routerLink="/question-list/33">Criminal Law Queries</a></li>
-                        <li><a routerLink="/question-list/59">Labour & Service Law Queries</a></li>
-                        <li><a routerLink="/question-list/25">Consumer Court Queries</a></li>
-                        <li><a routerLink="/question-list/23">Civil Law Queries</a></li>
-                        <li><a routerLink="/question-list/79">Recovery Law Queries</a></li>
-                        <li><a routerLink="/question-list/41">Documentation Law Queries</a></li>
-                        <li><a routerLink="/question-category" class="button button-default">All Answers</a></li>
+                        <li><a routerLink="/question-list/39"><i class="fa fa-angle-right"></i>&nbsp;Divorce Law Queries</a></li>
+                        <li><a routerLink="/question-list/77"><i class="fa fa-angle-right"></i>&nbsp;Property Law Queries</a></li>
+                        <li><a routerLink="/question-list/33"><i class="fa fa-angle-right"></i>&nbsp;Criminal Law Queries</a></li>
+                        <li><a routerLink="/question-list/59"><i class="fa fa-angle-right"></i>&nbsp;Labour & Service Law Queries</a></li>
+                        <li><a routerLink="/question-list/25"><i class="fa fa-angle-right"></i>&nbsp;Consumer Court Queries</a></li>
+                        <li><a routerLink="/question-list/23"><i class="fa fa-angle-right"></i>&nbsp;Civil Law Queries</a></li>
+                        <li><a routerLink="/question-list/79"><i class="fa fa-angle-right"></i>&nbsp;Recovery Law Queries</a></li>
+                        <li><a routerLink="/question-list/41"><i class="fa fa-angle-right"></i>&nbsp;Documentation Law Queries</a></li>
+                        <li><a routerLink="/question-category" class="button button-default"><i class="fa fa-angle-right"></i>&nbsp;All Answers</a></li>
                       </ul>
                     </div>
                     <div class="col-sm-2">
-                      <span class="dropmenu-title">Guides &amp; Articles</span>
+                      <span class="dropmenu-title"><i class="fa fa-book-open"></i>&nbsp;Guides &amp; Articles</span>
                       <ul class="list-unstyled" style="margin-top:20px;">
-                        <li><a routerLink="/indian-kanoon/guides/divorce">Divorce Law Guides</a></li>
-                        <li><a routerLink="/indian-kanoon/guides/criminal">Criminal Law Guides</a></li>
-                        <li><a routerLink="/indian-kanoon/guides/property">Property Law Guides</a></li>
-                        <li><a routerLink="/indian-kanoon/guides/consumer-court">Consumer Court Guides</a></li>
-                        <li><a routerLink="/indian-kanoon//labour-and-service">Labour & Service Law Guides</a>
+                        <li><a routerLink="/indian-kanoon/guides/divorce"><i class="fa fa-angle-right"></i>&nbsp;Divorce Law Guides</a></li>
+                        <li><a routerLink="/indian-kanoon/guides/criminal"><i class="fa fa-angle-right"></i>&nbsp;Criminal Law Guides</a></li>
+                        <li><a routerLink="/indian-kanoon/guides/property"><i class="fa fa-angle-right"></i>&nbsp;Property Law Guides</a></li>
+                        <li><a routerLink="/indian-kanoon/guides/consumer-court"><i class="fa fa-angle-right"></i>&nbsp;Consumer Court Guides</a></li>
+                        <li><a routerLink="/indian-kanoon//labour-and-service"><i class="fa fa-angle-right"></i>&nbsp;Labour & Service Law Guides</a>
                         </li>
-                        <li><a routerLink="/indian-kanoon/guides/medical-negligence">Medical Negligence Law
+                        <li><a routerLink="/indian-kanoon/guides/medical-negligence"><i class="fa fa-angle-right"></i>&nbsp;Medical Negligence Law
                             Guides</a></li>
-                        <li><a routerLink="/indian-kanoon/guides/civil">Civil Law Guides</a></li>
-                        <li><a routerLink="/indian-kanoon/guides/cheque-bounce">Cheque Bounce Law Guides</a></li>
-                        <li><a routerLink="/indian-kanoon/guides" class="button button-default">All Guides</a></li>
+                        <li><a routerLink="/indian-kanoon/guides/civil"><i class="fa fa-angle-right"></i>&nbsp;Civil Law Guides</a></li>
+                        <li><a routerLink="/indian-kanoon/guides/cheque-bounce"><i class="fa fa-angle-right"></i>&nbsp;Cheque Bounce Law Guides</a></li>
+                        <li><a routerLink="/indian-kanoon/guides" class="button button-default"><i class="fa fa-angle-right"></i>&nbsp;All Guides</a></li>
                       </ul>
                     </div>
                     <div class="col-sm-2">
-                      <span class="dropmenu-title">SC Judgements</span>
+                      <span class="dropmenu-title"><i class="fa fa-briefcase"></i>&nbsp;SC Judgements</span>
                       <ul class="list-unstyled" style="margin-top:20px;">
-                        <li><a href="/indian-kanoon/Judgements/property">Property</a></li>
-                        <li><a href="/indian-kanoon/Judgements/divorce">Divorce</a></li>
-                        <li><a href="/indian-kanoon/Judgements/civil">Civil</a></li>
-                        <li><a href="/indian-kanoon/Judgements/criminal">Criminal</a></li>
-                        <li><a href="/indian-kanoon/Judgements/banking-and-finance">Banking & Finance</a></li>
-                        <li><a href="/indian-kanoon/Judgements/corporate">Corporate</a></li>
-                        <li><a href="/indian-kanoon/Judgements/Labour-and-Service">Labour/Consumer</a></li>
+                        <li><a href="/indian-kanoon/Judgements/property"><i class="fa fa-angle-right"></i>&nbsp;Property</a></li>
+                        <li><a href="/indian-kanoon/Judgements/divorce"><i class="fa fa-angle-right"></i>&nbsp;Divorce</a></li>
+                        <li><a href="/indian-kanoon/Judgements/civil"><i class="fa fa-angle-right"></i>&nbsp;Civil</a></li>
+                        <li><a href="/indian-kanoon/Judgements/criminal"><i class="fa fa-angle-right"></i>&nbsp;Criminal</a></li>
+                        <li><a href="/indian-kanoon/Judgements/banking-and-finance"><i class="fa fa-angle-right"></i>&nbsp;Banking & Finance</a></li>
+                        <li><a href="/indian-kanoon/Judgements/corporate"><i class="fa fa-angle-right"></i>&nbsp;Corporate</a></li>
+                        <li><a href="/indian-kanoon/Judgements/Labour-and-Service"><i class="fa fa-angle-right"></i>&nbsp;Labour/Consumer</a></li>
                       </ul>
                     </div>
                     <div class="col-sm-2">
-                      <span class="dropmenu-title">Form & Agreements</span>
+                      <span class="dropmenu-title"><i class="fa fa-file-signature"></i>&nbsp;Form & Agreements</span>
                       <ul class="list-unstyled" style="margin-top:20px;">
-                        <li><a href="/indian-kanoon/legal-documents/property">Property</a></li>
-                        <li><a href="/indian-kanoon/legal-documents/divorce">Divorce</a></li>
-                        <li><a href="/indian-kanoon/legal-documents/civil">Civil</a></li>
-                        <li><a href="/indian-kanoon/legal-documents/criminal">Criminal</a></li>
-                        <li><a href="/indian-kanoon/legal-documents/banking-and-finance">Banking & Finance</a></li>
-                        <li><a href="/indian-kanoon/legal-documents/corporate">Corporate</a></li>
-                        <li><a href="/indian-kanoon/legal-documents/Labour-and-Service">Labour/Consumer</a></li>
+                        <li><a href="/indian-kanoon/legal-documents/property"><i class="fa fa-angle-right"></i>&nbsp;Property</a></li>
+                        <li><a href="/indian-kanoon/legal-documents/divorce"><i class="fa fa-angle-right"></i>&nbsp;Divorce</a></li>
+                        <li><a href="/indian-kanoon/legal-documents/civil"><i class="fa fa-angle-right"></i>&nbsp;Civil</a></li>
+                        <li><a href="/indian-kanoon/legal-documents/criminal"><i class="fa fa-angle-right"></i>&nbsp;Criminal</a></li>
+                        <li><a href="/indian-kanoon/legal-documents/banking-and-finance"><i class="fa fa-angle-right"></i>&nbsp;Banking & Finance</a></li>
+                        <li><a href="/indian-kanoon/legal-documents/corporate"><i class="fa fa-angle-right"></i>&nbsp;orporate</a></li>
+                        <li><a href="/indian-kanoon/legal-documents/Labour-and-Service"><i class="fa fa-angle-right"></i>&nbsp;Labour/Consumer</a></li>
                       </ul>
                     </div>
                     <div class="col-sm-2">
-                      <span class="dropmenu-title">Other Resources</span>
+                      <span class="dropmenu-title"><i class="fa fa-folder-open"></i>&nbsp;Other Resources</span>
                       <ul class="list-unstyled" style="margin-top:20px;">
-                        <li><a href="/indian-kanoon/law/ipc">Indian Penal Code (IPC)</a></li>
-                        <li><a href="/indian-kanoon/law/crpc">Code of Criminal Procedure (CrPC)</a></li>
-                        <li><a href="/indian-kanoon/law/cpc">Code of Civil Procedure (CPC)</a></li>
-                        <li><a href="/indian-kanoon/law/hindu-marriage-act">Hindu Marriage Act (HMA)</a></li>
-                        <li><a href="/indian-kanoon/law/income-tax-act">Income Tax Act</a></li>
-                        <li><a href="/indian-kanoon/law/constitution-of-india">Constitution Of India</a></li>
-                        <li><a href="/indian-kanoon/law/posh-act">POSH Act</a></li>
+                        <li><a href="/indian-kanoon/law/ipc"><i class="fa fa-angle-right"></i>&nbsp;Indian Penal Code (IPC)</a></li>
+                        <li><a href="/indian-kanoon/law/crpc"><i class="fa fa-angle-right"></i>&nbsp;Code of Criminal Procedure (CrPC)</a></li>
+                        <li><a href="/indian-kanoon/law/cpc"><i class="fa fa-angle-right"></i>&nbsp;Code of Civil Procedure (CPC)</a></li>
+                        <li><a href="/indian-kanoon/law/hindu-marriage-act"><i class="fa fa-angle-right"></i>&nbsp;Hindu Marriage Act (HMA)</a></li>
+                        <li><a href="/indian-kanoon/law/income-tax-act"><i class="fa fa-angle-right"></i>&nbsp;Income Tax Act</a></li>
+                        <li><a href="/indian-kanoon/law/constitution-of-india"><i class="fa fa-angle-right"></i>&nbsp;Constitution Of India</a></li>
+                        <li><a href="/indian-kanoon/law/posh-act"><i class="fa fa-angle-right"></i>&nbsp;POSH Act</a></li>
                       </ul>
                     </div>
                     <div class="col-sm-2">
-                      <span class="dropmenu-title">Get Legal Advice</span>
+                      <span class="dropmenu-title"><i class="fa fa-user-tie"></i>&nbsp;Get Legal Advice</span>
                       <ul class="list-unstyled" style="margin-top:20px;">
                         <li><span>Get expert legal advice from multiple lawyers within a few hours</span></li>
-                        <li><a href="ask-a-free-question" class="button button-default">Ask a Free Question</a>
+                        <li><a routerLink="ask-question" class="button button-default"><i class="far fa-comment-dots"></i>&nbsp;Ask a Free Question</a>
                         </li>
-                        <li><a href="free-legal-advice" class="button button-default">Free legal advice</a></li>
+                        <li><a routerLink="ask-question" class="button button-default"><i class="far fa-comment-dots"></i>&nbsp;Free legal advice</a></li>
                       </ul>
                       <br /><br />
-                      <span class="dropmenu-title">Need Instant Advice</span>
+                      <span class="dropmenu-title" style="white-space: nowrap;"><i class="fa fa-phone-alt"></i>&nbsp; Need Instant Advice</span>
                       <ul class="list-unstyled" style="margin-top:20px;">
-                        <li><a href="free-legal-advice-phone" class="button button-default">Talk to a lawyer</a>
+                        <li><a routerLink="/enquiry" class="button button-default"><i class="fa fa-phone"></i>&nbsp; Talk to a lawyer</a>
                         </li>
                       </ul>
                     </div>
@@ -251,53 +274,53 @@
           </li>
           <li class="dropdown yamm-fw">
             <a href="/indian-kanoon/law/ipc" class="dropdown-toggle" data-toggle="dropdown" role="button"
-              aria-haspopup="true" aria-expanded="false">IPC SECTIONS</a>
+              aria-haspopup="true" aria-expanded="false">IPC SECTIONS <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li>
                 <div class="yamm-content">
                   <div class="row">
                     <div class="col-sm-3">
-                      <span class="dropmenu-title">Popular IPC Sections</span>
+                      <span class="dropmenu-title"><i class="fa fa-scroll"></i>&nbsp;Popular IPC Sections</span>
                       <ul class="list-unstyled" style="margin-top:20px;">
-                        <li><a href="/indian-kanoon/law/ipc/section-497">Section 497 IPC</a></li>
-                        <li><a href="/indian-kanoon/law/ipc/section-354">Section 354 IPC</a></li>
-                        <li><a href="/indian-kanoon/law/ipc/section-34">Section 34 IPC</a></li>
-                        <li><a href="/indian-kanoon/law/ipc/section-506">Section 506 IPC</a></li>
-                        <li><a href="/indian-kanoon/law/ipc/section-304">Section 304 IPC</a></li>
-                        <li><a href="/indian-kanoon/law/ipc" class="button button-default">More IPC Sections</a></li>
+                        <li><a href="/indian-kanoon/law/ipc/section-497"><i class="fa fa-angle-right"></i>&nbsp;Section 497 IPC</a></li>
+                        <li><a href="/indian-kanoon/law/ipc/section-354"><i class="fa fa-angle-right"></i>&nbsp;Section 354 IPC</a></li>
+                        <li><a href="/indian-kanoon/law/ipc/section-34"><i class="fa fa-angle-right"></i>&nbsp;Section 34 IPC</a></li>
+                        <li><a href="/indian-kanoon/law/ipc/section-506"><i class="fa fa-angle-right"></i>&nbsp;Section 506 IPC</a></li>
+                        <li><a href="/indian-kanoon/law/ipc/section-304"><i class="fa fa-angle-right"></i>&nbsp;Section 304 IPC</a></li>
+                        <li><a href="/indian-kanoon/law/ipc" class="button button-default"><i class="fa fa-angle-right"></i>&nbsp;More IPC Sections</a></li>
                       </ul>
                     </div>
                     <div class="col-sm-3">
-                      <span class="dropmenu-title">Popular IPC Sections</span>
+                      <span class="dropmenu-title"><i class="fa fa-scroll"></i>&nbsp;Popular IPC Sections</span>
                       <ul class="list-unstyled" style="margin-top:20px;">
-                        <li><a href="/indian-kanoon/law/ipc/section-420">Section 420 IPC</a></li>
-                        <li><a href="/indian-kanoon/law/ipc/section-302">Section 302 IPC</a></li>
-                        <li><a href="/indian-kanoon/law/ipc/section-323">Section 323 IPC</a></li>
-                        <li><a href="/indian-kanoon/law/ipc/section-406">Section 406 IPC</a></li>
-                        <li><a href="/indian-kanoon/law/ipc/section-376">Section 376 IPC</a></li>
-                        <li><a href="/indian-kanoon/law/ipc" class="button button-default">More IPC Sections</a></li>
+                        <li><a href="/indian-kanoon/law/ipc/section-420"><i class="fa fa-angle-right"></i>&nbsp;Section 420 IPC</a></li>
+                        <li><a href="/indian-kanoon/law/ipc/section-302"><i class="fa fa-angle-right"></i>&nbsp;Section 302 IPC</a></li>
+                        <li><a href="/indian-kanoon/law/ipc/section-323"><i class="fa fa-angle-right"></i>&nbsp;Section 323 IPC</a></li>
+                        <li><a href="/indian-kanoon/law/ipc/section-406"><i class="fa fa-angle-right"></i>&nbsp;Section 406 IPC</a></li>
+                        <li><a href="/indian-kanoon/law/ipc/section-376"><i class="fa fa-angle-right"></i>&nbsp;Section 376 IPC</a></li>
+                        <li><a href="/indian-kanoon/law/ipc" class="button button-default"><i class="fa fa-angle-right"></i>&nbsp;More IPC Sections</a></li>
                       </ul>
                     </div>
                     <div class="col-sm-3">
-                      <span class="dropmenu-title">Popular IPC Sections</span>
+                      <span class="dropmenu-title"><i class="fa fa-scroll"></i>&nbsp;Popular IPC Sections</span>
                       <ul class="list-unstyled" style="margin-top:20px;">
-                        <li><a href="/indian-kanoon/law/ipc/section-144">Section 144 IPC</a></li>
-                        <li><a href="/indian-kanoon/law/ipc/section-307">Section 307 IPC</a></li>
-                        <li><a href="/indian-kanoon/law/ipc/section-375">Section 375 IPC</a></li>
-                        <li><a href="/indian-kanoon/law/ipc/section-504">Section 504 IPC</a></li>
-                        <li><a href="/indian-kanoon/law/ipc/section-279">Section 279 IPC</a></li>
-                        <li><a href="/indian-kanoon/law/ipc" class="button button-default">More IPC Sections</a></li>
+                        <li><a href="/indian-kanoon/law/ipc/section-144"><i class="fa fa-angle-right"></i>&nbsp;Section 144 IPC</a></li>
+                        <li><a href="/indian-kanoon/law/ipc/section-307"><i class="fa fa-angle-right"></i>&nbsp;Section 307 IPC</a></li>
+                        <li><a href="/indian-kanoon/law/ipc/section-375"><i class="fa fa-angle-right"></i>&nbsp;Section 375 IPC</a></li>
+                        <li><a href="/indian-kanoon/law/ipc/section-504"><i class="fa fa-angle-right"></i>&nbsp;Section 504 IPC</a></li>
+                        <li><a href="/indian-kanoon/law/ipc/section-279"><i class="fa fa-angle-right"></i>&nbsp;Section 279 IPC</a></li>
+                        <li><a href="/indian-kanoon/law/ipc" class="button button-default"><i class="fa fa-angle-right"></i>&nbsp;More IPC Sections</a></li>
                       </ul>
                     </div>
                     <div class="col-sm-3">
-                      <span class="dropmenu-title">Popular IPC Sections</span>
+                      <span class="dropmenu-title"><i class="fa fa-scroll"></i>&nbsp;Popular IPC Sections</span>
                       <ul class="list-unstyled" style="margin-top:20px;">
-                        <li><a href="/indian-kanoon/law/ipc/section-498a">Section 498a IPC</a></li>
-                        <li><a href="/indian-kanoon/law/ipc/section-120b">Section 120b IPC</a></li>
-                        <li><a href="/indian-kanoon/law/ipc/section-341">Section 341 IPC</a></li>
-                        <li><a href="/indian-kanoon/law/ipc/section-100">Section 100 IPC</a></li>
-                        <li><a href="/indian-kanoon/law/ipc/section-300">Section 300 IPC</a></li>
-                        <li><a href="/indian-kanoon/law/ipc" class="button button-default">More IPC Sections</a></li>
+                        <li><a href="/indian-kanoon/law/ipc/section-498a"><i class="fa fa-angle-right"></i>&nbsp;Section 498a IPC</a></li>
+                        <li><a href="/indian-kanoon/law/ipc/section-120b"><i class="fa fa-angle-right"></i>&nbsp;Section 120b IPC</a></li>
+                        <li><a href="/indian-kanoon/law/ipc/section-341"><i class="fa fa-angle-right"></i>&nbsp;Section 341 IPC</a></li>
+                        <li><a href="/indian-kanoon/law/ipc/section-100"><i class="fa fa-angle-right"></i>&nbsp;Section 100 IPC</a></li>
+                        <li><a href="/indian-kanoon/law/ipc/section-300"><i class="fa fa-angle-right"></i>&nbsp;Section 300 IPC</a></li>
+                        <li><a href="/indian-kanoon/law/ipc" class="button button-default"><i class="fa fa-angle-right"></i>&nbsp;More IPC Sections</a></li>
                       </ul>
                     </div>
                   </div>
@@ -307,26 +330,26 @@
           </li>
           <li class="dropdown yamm-normal">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-              aria-expanded="false">BNS SECTIONS</a>
+              aria-expanded="false">BNS SECTIONS <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="/indian-kanoon/law/bns/bns-section-351">Section 351 BNS</a></li>
-              <li><a href="/indian-kanoon/law/bns/bns-section-125">Section 125 BNS</a></li>
-              <li><a href="/indian-kanoon/law/bns/bns-section-318">Section 318 BNS</a></li>
-              <li><a href="/indian-kanoon/law/bns/bns-section-126">Section 126 BNS</a></li>
-              <li><a href="/indian-kanoon/law/bns/bns-section-69">Section 69 BNS</a></li>
-              <li><a href="/indian-kanoon/law/bns/bns-section-137">Section 137 BNS</a></li>
-              <li><a href="/indian-kanoon/law/bns" class="button button-default">More BNS Sections</a></li>
+              <li><a href="/indian-kanoon/law/bns/bns-section-351"><i class="fa fa-angle-right"></i>&nbsp;Section 351 BNS</a></li>
+              <li><a href="/indian-kanoon/law/bns/bns-section-125"><i class="fa fa-angle-right"></i>&nbsp;Section 125 BNS</a></li>
+              <li><a href="/indian-kanoon/law/bns/bns-section-318"><i class="fa fa-angle-right"></i>&nbsp;Section 318 BNS</a></li>
+              <li><a href="/indian-kanoon/law/bns/bns-section-126"><i class="fa fa-angle-right"></i>&nbsp;Section 126 BNS</a></li>
+              <li><a href="/indian-kanoon/law/bns/bns-section-69"><i class="fa fa-angle-right"></i>&nbsp;Section 69 BNS</a></li>
+              <li><a href="/indian-kanoon/law/bns/bns-section-137"><i class="fa fa-angle-right"></i>&nbsp;Section 137 BNS</a></li>
+              <li><a href="/indian-kanoon/law/bns" class="button button-default"><i class="fa fa-angle-right"></i>&nbsp;More BNS Sections</a></li>
             </ul>
           </li>
           <li class="dropdown yamm-normal">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-              aria-expanded="false">ABOUT</a>
+              aria-expanded="false">ABOUT <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a routerLink="about">Why KanoonKiBaat?</a></li>
-              <li><a routerLink="press">In the Media</a></li>
-              <li><a routerLink="career">Careers</a></li>
-              <li><a routerLink="contact">Contact Us</a></li>
-              <li><a routerLink="register">Lawyer Signup</a></li>
+              <li><a routerLink="about"><i class="fa fa-angle-right"></i>&nbsp;Why KanoonKiBaat?</a></li>
+              <li><a routerLink="press"><i class="fa fa-angle-right"></i>&nbsp;In the Media</a></li>
+              <li><a routerLink="career"><i class="fa fa-angle-right"></i>&nbsp;Careers</a></li>
+              <li><a routerLink="contact"><i class="fa fa-angle-right"></i>&nbsp;Contact Us</a></li>
+              <li><a href="lawyer-registration"><i class="fa fa-angle-right"></i>&nbsp;Lawyer Signup</a></li>
             </ul>
           </li>
           <!-- <li><a href="/login">My Account</a></li> -->
@@ -347,8 +370,8 @@
     <br /><br />
     <div class="ebook-email-sec">
       <span style="font-size:16px;"><b>&#9989; 100% Confidentiality</b></span><br />
-      <span style="font-size:16px;"><b>&#9989; Verified Lawyers&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></span><br />
-      <span style="font-size:16px;"><b>&nbsp;&nbsp;&#9989; Contact Immediately&nbsp;&nbsp;</b></span>
+      <span style="font-size:16px;"><b>&#9989; Verified Lawyers&nbsp;&nbsp;&nbsp;</b></span><br />
+      <span style="font-size:16px;"><b>&nbsp;&#9989; Contact Immediately&nbsp;</b></span>
       <br /><br />
       <span style="font-size:16px;padding-bottom:0px;"><b>Share your legal issue to get connected with expert
           lawyers.</b></span>

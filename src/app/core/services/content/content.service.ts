@@ -7,6 +7,7 @@ import {
   ICategoryContentRequest,
   IContentRequest,
 } from '../../Models/interfaces/content';
+import { ISearchQuestionRequest } from '../../Models/interfaces/questions';
 
 @Injectable({
   providedIn: 'root',
@@ -28,6 +29,12 @@ export class ContentService {
     return this.master.post(
       environment.api +
         APIConstant.content.GetAllContentByCategoryAndContentType,
+      postData
+    );
+  }
+  getSearchArticleList(postData: ISearchQuestionRequest): Observable<any> {
+    return this.master.post(
+      environment.api + APIConstant.content.getArticleBySearchText,
       postData
     );
   }
