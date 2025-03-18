@@ -1,0 +1,73 @@
+.homepage-hero h1 {
+  font-size: 55px!important;
+}
+
+@media (max-width: 767px) {
+  .homepage-hero h1 {
+    font-size: 28px!important;
+  }
+}
+.fa fa-signal
+{
+color: green;
+}
+#venue-amenities ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center align */
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+#venue-amenities li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa; /* Light background */
+  border-radius: 10px; /* Smooth edges */
+  padding: 15px;
+  margin: 10px;
+  text-align: center;
+  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+  min-width: 120px; /* Prevents shrinking */
+}
+
+#venue-amenities li a {
+  text-decoration: none;
+  width: 100%;
+}
+
+/* Hover effect */
+#venue-amenities li:hover {
+  background: #851c1c; /* Dark Red */
+  transform: translateY(-5px);
+}
+
+#venue-amenities li:hover a,
+#venue-amenities li:hover p,
+#venue-amenities li:hover i {
+  color: white !important; /* Ensure text turns white */
+}/* Remove top margin for consecutive paragraphs */
+#venue-amenities p + p {
+  margin-top: 0px;
+}
+
+/* Mobile View: 2 Columns */
+@media (max-width: 768px) {
+  #venue-amenities ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 10px; /* Space between items */
+    justify-content: center;
+    align-items: center;
+  }
+
+  #venue-amenities li {
+    width: 100%; /* Ensures proper alignment in grid */
+    margin: 0;
+    padding: 10px;
+  }
+}

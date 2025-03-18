@@ -1,5 +1,21 @@
 <div id="main">
   <app-breadcrumb></app-breadcrumb>
+  <div class="icon-bar">
+    <!-- FAQ Tab -->
+    <div class="tab faq-tab" (click)="openFAQModal()">
+        <span>FAQ</span>
+    </div>
+
+    <!-- Call Tab -->
+    <div class="tab call-tab" (click)="openCallModal()">
+        <span>Call</span>
+    </div>
+
+    <!-- Judgment Tab -->
+    <div class="tab judgment-tab">
+        <span>Judgment</span>
+    </div>
+</div>
   <section id="guide-detail" class="guide-detail two-cols">
     <div class="container">
       <div class="row">
@@ -11,11 +27,15 @@
             [totalResult]="totalResult"
             [currentPage]="currentPage"
             (updateQuestionList)="onPageChange($event)"></app-question-box>
-
+          <app-question-answers></app-question-answers>
+            <app-faq [categoryID]="categoryId" [categoryName]="categoryName"></app-faq>
 
         </div>
+
         <app-right-side-ad></app-right-side-ad>
+
       </div>
+
     </div>
   </section>
 </div>

@@ -6,6 +6,8 @@ import {
   OnChanges,
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MiscService } from 'src/app/core/services/Misc/misc.service';
 
 @Component({
   selector: 'app-question-box',
@@ -21,7 +23,11 @@ export class QuestionBoxComponent implements OnChanges {
   pages: number[] = [];
   displayPages: number[] = [];
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private sanitizer: DomSanitizer,
+    private miscService: MiscService
+  ) {}
 
   ngOnChanges(): void {
     this.updatePages(); // Update pages whenever input data changes
@@ -76,5 +82,11 @@ export class QuestionBoxComponent implements OnChanges {
 
   trackByFn(index: number, item: any): number {
     return index;
+  }
+  getSanitizedContent(content: string) {
+    return this.sanitizer.bypassSecurityTrustHtml(content);
+  }
+  openAnswerModal(question: any) {
+    this.miscService.openAnswerModal(question); // Use the service to open the modal
   }
 }

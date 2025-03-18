@@ -13,11 +13,11 @@
       <ul style="margin-left:0px; padding-left:0px; display:none;" class="results" id="resultsd">
         <li class="list-group-item"><a href="lawyers"><span style="margin-bottom:0px;">SUGGESTED
               SEARCHES</span></a></li>
-        <li class="list-group-item"><a href="divorce-lawyers"><span>Find a <strong>Divorce &amp; Alimony</strong>
+        <li class="list-group-item"><a (click)="openCallModal()"><span>Find a <strong>Divorce &amp; Alimony</strong>
               Lawyer</span></a></li>
-        <li class="list-group-item"><a href="property-lawyers"><span>Find a <strong>Property Dispute</strong>
+        <li class="list-group-item"><a (click)="openCallModal()"><span>Find a <strong>Property Dispute</strong>
               Lawyer</span></a></li>
-        <li class="list-group-item"><a href="criminal-lawyers"><span>Find a <strong>Criminal Defence</strong>
+        <li class="list-group-item"><a (click)="openCallModal()"><span>Find a <strong>Criminal Defence</strong>
               Lawyer</span></a></li>
         <li class="list-group-item"><a routerLink="/indian-kanoon/law/ipc"><span>See <strong>IPC
                 Sections</strong></span></a></li>
@@ -39,10 +39,10 @@
                     class="fa fa-envelope"></i></span>&nbsp;
                 <b>legal&#64;kanoonkibaat.com</b></a></li>
 
-            <li><a href="/indian-kanoon"><i class="fa fa-book"></i> &nbsp; Indian Kanoon</a></li>
-            <li><a routerLink="/indian-kanoon/law/ipc"><i class="fa fa-legal"></i>&nbsp; Indian Penal Code</a></li>
-            <li><a routerLink="/ask-question"><i class="far fa-comment-dots"></i>&nbsp; Ask a Free Question</a></li>
-            <li><a routerLink="/enquiry"><i class="fa fa-phone"></i>&nbsp; Talk To A Lawyer</a></li>
+            <li><a (click)="openServiceEnquiryModal('Licenses')"><i class="fa fa-book"></i> &nbsp; Legal Services</a></li>
+            <li><a routerLink="/indian-kanoon/law/ipc"><i class="fa fa-legal"></i>&nbsp; Laws</a></li>
+            <li><a (click)="openAskQuestionModal()" style="cursor: pointer;"><i class="far fa-comment-dots"></i>&nbsp; Ask a Free Question</a></li>
+            <li ><a (click)="openCallModal()" style="cursor: pointer;"><i class="fa fa-phone"></i>&nbsp; Talk To A Lawyer</a></li>
             <li><a href="/lawyer-registration"><i class="fas fa-user-circle"></i> &nbsp; Lawyer Signup</a></li>
             <li><a href="https://www.facebook.com" target="_blank" >
               <svg  width="20" height="20" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -105,7 +105,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown yamm-fw">
             <a href="lawyers" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-              aria-expanded="false">FIND A LAWYER <span class="caret"></span></a>
+              aria-expanded="false">LAWYER CONNECT <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li>
                 <div class="yamm-content">
@@ -113,56 +113,56 @@
                     <div class="col-sm-2">
                       <span class="dropmenu-title"><i class="fa fa-users"></i>&nbsp;Personal / Family</span>
                       <ul class="list-unstyled" style="margin-top:20px;">
-                        <li><a href="divorce-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Divorce</a></li>
-                        <li><a href="family-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Family Dispute</a></li>
-                        <li><a href="child-custody-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Child Custody</a></li>
-                        <li><a href="muslim-law-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Muslim Law</a></li>
-                        <li><a href="medical-negligence-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Medical Negligence</a></li>
-                        <li><a href="motor-accident-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Motor Accident</a></li>
+                        <li><a (click)="openCallModal()"><i class="fa fa-angle-right"></i>&nbsp;Divorce</a></li>
+                        <li><a (click)="openCallModal()"><i class="fa fa-angle-right"></i>&nbsp;Family Dispute</a></li>
+                        <li><a (click)="openCallModal()"><i class="fa fa-angle-right"></i>&nbsp;Child Custody</a></li>
+                        <li><a (click)="openCallModal()"><i class="fa fa-angle-right"></i>&nbsp;Muslim Law</a></li>
+                        <li><a (click)="openCallModal()"><i class="fa fa-angle-right"></i>&nbsp;Medical Negligence</a></li>
+                        <li><a (click)="openCallModal()"><i class="fa fa-angle-right"></i>&nbsp;Motor Accident</a></li>
                       </ul>
                     </div>
                     <div class="col-sm-2">
                       <span class="dropmenu-title"><i class="fa fa-gavel"></i>&nbsp;Criminal / Property</span>
                       <ul class="list-unstyled" style="margin-top:20px;">
-                        <li><a href="criminal-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Criminal</a></li>
-                        <li><a href="property-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Property</a></li>
-                        <li><a href="landlordtenant-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Landlord / Tenant</a></li>
-                        <li><a href="cyber-crime-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Cyber Crime</a></li>
-                        <li><a href="wills-trusts-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Wills / Trusts</a></li>
-                        <li><a href="labour-service-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Labour & Service</a></li>
+                        <li><a (click)="openCallModal()"><i class="fa fa-angle-right"></i>&nbsp;Criminal</a></li>
+                        <li><a (click)="openCallModal()"><i class="fa fa-angle-right"></i>&nbsp;Property</a></li>
+                        <li><a (click)="openCallModal()"><i class="fa fa-angle-right"></i>&nbsp;Landlord / Tenant</a></li>
+                        <li><a (click)="openCallModal()"><i class="fa fa-angle-right"></i>&nbsp;Cyber Crime</a></li>
+                        <li><a (click)="openCallModal()"><i class="fa fa-angle-right"></i>&nbsp;Wills / Trusts</a></li>
+                        <li><a (click)="openCallModal()"><i class="fa fa-angle-right"></i>&nbsp;Labour & Service</a></li>
                       </ul>
                     </div>
                     <div class="col-sm-2">
                       <span class="dropmenu-title"><i class="fa fa-balance-scale"></i>&nbsp;Civil / Debt Matters</span>
                       <ul class="list-unstyled" style="margin-top:20px;">
-                        <li><a href="documentation-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Documentation</a></li>
-                        <li><a href="consumer-court-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Consumer Court</a></li>
-                        <li><a href="civil-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Civil</a></li>
-                        <li><a href="cheque-bounce-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Cheque Bounce</a></li>
-                        <li><a href="recovery-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Recovery</a></li>
+                        <li><a (click)="openCallModal()"><i class="fa fa-angle-right"></i>&nbsp;Documentation</a></li>
+                        <li><a (click)="openCallModal()"><i class="fa fa-angle-right"></i>&nbsp;Consumer Court</a></li>
+                        <li><a (click)="openCallModal()"><i class="fa fa-angle-right"></i>&nbsp;Civil</a></li>
+                        <li><a (click)="openCallModal()"><i class="fa fa-angle-right"></i>&nbsp;Cheque Bounce</a></li>
+                        <li><a (click)="openCallModal()"><i class="fa fa-angle-right"></i>&nbsp;Recovery</a></li>
                       </ul>
                     </div>
                     <div class="col-sm-2">
                       <span class="dropmenu-title"><i class="fa fa-building"></i>&nbsp;Corporate Law</span>
                       <ul class="list-unstyled" style="margin-top:20px;">
-                        <li><a href="arbitration-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Arbitration</a></li>
-                        <li><a href="copyright-patent-trademark-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Trademark & Copyright</a></li>
-                        <li><a href="customs-central-excise-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Customs & Central Excise</a></li>
-                        <li><a href="startup-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Startup</a></li>
-                        <li><a href="banking-finance-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Banking / Finance</a></li>
-                        <li><a href="gst-lawyers"><i class="fa fa-angle-right"></i>&nbsp;GST</a></li>
-                        <li><a href="corporate-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Corporate</a></li>
-                        <li><a href="tax-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Tax</a></li>
+                        <li><a (click)="openCallModal()"><i class="fa fa-angle-right"></i>&nbsp;Arbitration</a></li>
+                        <li><a (click)="openCallModal()"><i class="fa fa-angle-right"></i>&nbsp;Trademark & Copyright</a></li>
+                        <li><a (click)="openCallModal()"><i class="fa fa-angle-right"></i>&nbsp;Customs & Central Excise</a></li>
+                        <li><a (click)="openCallModal()"><i class="fa fa-angle-right"></i>&nbsp;Startup</a></li>
+                        <li><a (click)="openCallModal()"><i class="fa fa-angle-right"></i>&nbsp;Banking / Finance</a></li>
+                        <li><a (click)="openCallModal()"><i class="fa fa-angle-right"></i>&nbsp;GST</a></li>
+                        <li><a (click)="openCallModal()"><i class="fa fa-angle-right"></i>&nbsp;Corporate</a></li>
+                        <li><a (click)="openCallModal()"><i class="fa fa-angle-right"></i>&nbsp;Tax</a></li>
                       </ul>
                     </div>
                     <div class="col-sm-2">
                       <span class="dropmenu-title"><i class="fa fa-ellipsis-h"></i>&nbsp;Others</span>
                       <ul class="list-unstyled" style="margin-top:20px;">
-                        <li><a href="armed-forces-tribunal-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Armed Forces Tribunal</a></li>
-                        <li><a href="supreme-court-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Supreme Court</a></li>
-                        <li><a href="insurance-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Insurance</a></li>
-                        <li><a href="immigration-lawyers"><i class="fa fa-angle-right"></i>&nbsp;Immigration</a></li>
-                        <li><a href="international-law-lawyers"><i class="fa fa-angle-right"></i>&nbsp;International Law</a></li>
+                        <li><a (click)="openCallModal()"><i class="fa fa-angle-right"></i>&nbsp;Armed Forces Tribunal</a></li>
+                        <li><a (click)="openCallModal()"><i class="fa fa-angle-right"></i>&nbsp;Supreme Court</a></li>
+                        <li><a (click)="openCallModal()"><i class="fa fa-angle-right"></i>&nbsp;Insurance</a></li>
+                        <li><a (click)="openCallModal()"><i class="fa fa-angle-right"></i>&nbsp;Immigration</a></li>
+                        <li><a (click)="openCallModal()"><i class="fa fa-angle-right"></i>&nbsp;International Law</a></li>
                       </ul>
                     </div>
                     <div class="col-sm-2">
@@ -170,7 +170,7 @@
                       <ul class="list-unstyled" style="margin-top:20px;">
                         <li>
                           <p>Need help to find the right lawyer ?</p>
-                          <a routerLink="/enquiry" class="button button-default"><i class="fa fa-phone"></i>&nbsp;Start Here</a>
+                          <a (click)="openCallModal()" style="cursor: pointer;" class="button button-default"><i class="fa fa-phone"></i>&nbsp;Start Here</a>
                         </li>
                       </ul>
                     </div>
@@ -181,7 +181,7 @@
           </li>
           <li class="dropdown yamm-fw">
             <a href class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-              aria-expanded="false">LEGAL ADVICE <span class="caret"></span></a>
+              aria-expanded="false">LEGAL GUIDANCE <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li>
                 <div class="yamm-content">
@@ -192,9 +192,9 @@
                         <li><a routerLink="/question-list/39"><i class="fa fa-angle-right"></i>&nbsp;Divorce Law Queries</a></li>
                         <li><a routerLink="/question-list/77"><i class="fa fa-angle-right"></i>&nbsp;Property Law Queries</a></li>
                         <li><a routerLink="/question-list/33"><i class="fa fa-angle-right"></i>&nbsp;Criminal Law Queries</a></li>
-                        <li><a routerLink="/question-list/59"><i class="fa fa-angle-right"></i>&nbsp;Labour & Service Law Queries</a></li>
-                        <li><a routerLink="/question-list/25"><i class="fa fa-angle-right"></i>&nbsp;Consumer Court Queries</a></li>
-                        <li><a routerLink="/question-list/23"><i class="fa fa-angle-right"></i>&nbsp;Civil Law Queries</a></li>
+                        <li><a routerLink="/question-list/112"><i class="fa fa-angle-right"></i>&nbsp;Labour & Service Law Queries</a></li>
+                        <li><a routerLink="/question-list/124"><i class="fa fa-angle-right"></i>&nbsp;Consumer Court Queries</a></li>
+                        <li><a routerLink="/question-list/123"><i class="fa fa-angle-right"></i>&nbsp;Civil Law Queries</a></li>
                         <li><a routerLink="/question-list/79"><i class="fa fa-angle-right"></i>&nbsp;Recovery Law Queries</a></li>
                         <li><a routerLink="/question-list/41"><i class="fa fa-angle-right"></i>&nbsp;Documentation Law Queries</a></li>
                         <li><a routerLink="/question-category" class="button button-default"><i class="fa fa-angle-right"></i>&nbsp;All Answers</a></li>
@@ -207,7 +207,7 @@
                         <li><a routerLink="/indian-kanoon/guides/criminal"><i class="fa fa-angle-right"></i>&nbsp;Criminal Law Guides</a></li>
                         <li><a routerLink="/indian-kanoon/guides/property"><i class="fa fa-angle-right"></i>&nbsp;Property Law Guides</a></li>
                         <li><a routerLink="/indian-kanoon/guides/consumer-court"><i class="fa fa-angle-right"></i>&nbsp;Consumer Court Guides</a></li>
-                        <li><a routerLink="/indian-kanoon//labour-and-service"><i class="fa fa-angle-right"></i>&nbsp;Labour & Service Law Guides</a>
+                        <li><a routerLink="/indian-kanoon/guides/labour-&-service"><i class="fa fa-angle-right"></i>&nbsp;Labour & Service Law Guides</a>
                         </li>
                         <li><a routerLink="/indian-kanoon/guides/medical-negligence"><i class="fa fa-angle-right"></i>&nbsp;Medical Negligence Law
                             Guides</a></li>
@@ -256,14 +256,14 @@
                       <span class="dropmenu-title"><i class="fa fa-user-tie"></i>&nbsp;Get Legal Advice</span>
                       <ul class="list-unstyled" style="margin-top:20px;">
                         <li><span>Get expert legal advice from multiple lawyers within a few hours</span></li>
-                        <li><a routerLink="ask-question" class="button button-default"><i class="far fa-comment-dots"></i>&nbsp;Ask a Free Question</a>
+                        <li><a (click)="openAskQuestionModal()" style="cursor: pointer;" class="button button-default"><i class="far fa-comment-dots"></i>&nbsp;Ask a Free Question</a>
                         </li>
-                        <li><a routerLink="ask-question" class="button button-default"><i class="far fa-comment-dots"></i>&nbsp;Free legal advice</a></li>
+                        <li><a (click)="openAskQuestionModal()" style="cursor: pointer;" class="button button-default"><i class="far fa-comment-dots"></i>&nbsp;Free legal advice</a></li>
                       </ul>
                       <br /><br />
                       <span class="dropmenu-title" style="white-space: nowrap;"><i class="fa fa-phone-alt"></i>&nbsp; Need Instant Advice</span>
                       <ul class="list-unstyled" style="margin-top:20px;">
-                        <li><a routerLink="/enquiry" class="button button-default"><i class="fa fa-phone"></i>&nbsp; Talk to a lawyer</a>
+                        <li><a (click)="openCallModal()" style="cursor: pointer;" class="button button-default"><i class="fa fa-phone"></i>&nbsp; Talk to a lawyer</a>
                         </li>
                       </ul>
                     </div>
@@ -353,7 +353,7 @@
             </ul>
           </li>
           <!-- <li><a href="/login">My Account</a></li> -->
-          <li><a style="cursor: pointer;" (click)="logout()">Logout</a></li>
+          <!-- <li><a style="cursor: pointer;" (click)="logout()">Logout</a></li> -->
           <li class="hidden-xs"><a href class="search-button" style="color:#4B9142;"><span class="icon_search"></span>
               Search</a></li>
         </ul>
@@ -393,3 +393,6 @@
   </div>
 </section>
 <div class="cover" style="right:10px"></div>
+<app-enquiry></app-enquiry>
+<app-ask-question></app-ask-question>
+<app-service-enquiry></app-service-enquiry>

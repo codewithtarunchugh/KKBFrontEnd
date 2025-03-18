@@ -3,25 +3,24 @@
     <div class="block-wrapper" style="position: relative !important;">
       <div class="row">
         <div class="col-sm-3">
-          <i style="font-size: 400px; color:white;" class="fa fa-user-tie"></i>
+          <!-- <i style="font-size: 400px; color:white;" class="fa fa-user-tie"></i> -->
+          <img src="assets/img/main.png" style="height: 420px;" />
         </div>
         <div class="col-sm-9">
           <div class="text-center">
 
-            <h1 style="color:#FFF; text-align:center;">Expert Legal Advice at <br />No Cost from Premier Lawyers
+            <h1 style="color:#FFF; text-align:center;">Expert Legal Advice at No Cost <br />from Premier Lawyers
             </h1>
-            <p class="lead" style="color:#FFF; font-size:28px; margin-bottom:10px;">Access 3,000 lawyers available in
-              more
-              than 200 cities throughout India</p>
+            <p class="lead" style="color:#FFF; font-size:28px; margin-bottom:10px;">Connect with 3,000 lawyers across
+              200+ cities in India.</p>
             <div class="cta-wrapper" style="margin-top:0px;">
               <a href="legal-enquiry.html" style="background-color:#f2f2f2; border-radius:4px; padding:5px;"
-                id="home-desktop"><span style="color:#333; font-weight:600; font-size:12px;"><img
-                    src="assets/images/lawyers_online.png" style="width:50px; margin-top:-2px;" alt="KanoonKiBaat" />
-                  651+
+                id="home-desktop"><span style="color:darkgreen; font-weight:600; font-size:12px;">
+                  <i class="fa fa-signal" style="color:darkgreen"></i> 310+
                   Experts are online <span class="pulse"></span></span></a><br /><br /><br />
-              <a routerLink="/enquiry" class="button button-default button-large"><i
+              <a (click)="openCallModal()" class="button button-default button-large"><i
                   class="fa fa-phone"></i>&nbsp;Talk to an Expert</a>
-              <a href="ask-a-free-question.html" class="button button-primary button-large"
+              <a (click)="openAskQuestionModal()" class="button button-primary button-large"
                 style="background:#00000003; color:#FFF; border-color:#fff;"><i
                   class="far fa-comment-dots"></i>&nbsp;Ask a free question</a>
             </div>
@@ -40,17 +39,18 @@
         <br />
         <h1 style="color:#FFF; font-size:26px; text-align:center;">Expert Legal Advice at<br />
           No Cost from Premier Lawyers</h1>
-        <p class="lead" style="color:#FFF; font-size:16px; margin-bottom:10px;">Access 3,000 lawyers available in more than <br> 200 cities throughout India</p>
+        <p class="lead" style="color:#FFF; font-size:16px; margin-bottom:10px;">Connect with 3,000 lawyers across 200+
+          cities in India.</p>
         <div class="cta-wrapper" style="margin-top:0px;">
           <a href="legal-enquiry.html" id="home-mobile"
             style="background-color:#f2f2f2; border-radius:4px; padding:5px;"><span
-              style="color:#333; font-weight:600; font-size:12px;"><img src="assets/images/lawyers_online.png"
-                style="width:50px; margin-top:-2px;" alt="KanoonKiBaat" /> 651+ Lawyers are online <span
-                class="pulse"></span></span></a><br /><br />
-          <a routerLink="/enquiry" class="button button-default button-large" style="padding:10px;">Talk
-            to a lawyer</a>
-          <a routerLink="ask-question" class="button button-primary button-large"
-            style="padding:10px; background:#00000003; color:#FFF; border-color:#fff;">Ask a free question</a>
+              style="color:darkgreen; font-weight:600; font-size:12px;"><i style="color:darkgreen"
+                class="fa fa-signal"></i> 310+ Lawyers are online <span class="pulse"></span></span></a><br /><br />
+          <a (click)="openCallModal()" class="button button-default button-large" style="padding:10px;"><i
+              class="fa fa-phone"></i>&nbsp;Talk to an Expert</a>
+          <a (click)="openAskQuestionModal()" class="button button-primary button-large"
+            style="padding:10px; background:#00000003; color:#FFF; border-color:#fff;"><i
+              class="far fa-comment-dots"></i>&nbsp;Ask a free question</a>
         </div>
         <br />
       </div>
@@ -87,7 +87,7 @@
               </ul>
 
             </div>
-            <div class="cta"><a href="property-dispute.html"
+            <div (click)="openServiceEnquiryModal('property')" class="cta"><a
                 class="button button-default button-light button-full text-center"><i style="color: #851c1c;"
                   class="fas fa-eye"></i>&nbsp; View Details</a> </div>
           </div>
@@ -114,7 +114,7 @@
 
               </ul>
             </div>
-            <div class="cta"><a href="property-dispute.html"
+            <div (click)="openServiceEnquiryModal('Licenses')" class="cta"><a
                 class="button button-default button-light button-full text-center"><i style="color: #851c1c;"
                   class="fas fa-eye"></i>&nbsp; View Details</a> </div>
           </div>
@@ -141,7 +141,7 @@
                     class="fa fa-angle-right"></i>&nbsp;Trademark Infringement</li>
               </ul>
             </div>
-            <div class="cta"><a href="property-dispute.html"
+            <div (click)="openServiceEnquiryModal('Intellectual')" class="cta"><a
                 class="button button-default button-light button-full text-center"><i style="color: #851c1c;"
                   class="fas fa-eye"></i>&nbsp; View Details</a> </div>
           </div>
@@ -169,7 +169,41 @@
                     class="fa fa-angle-right"></i>&nbsp;Indirect Tax</li>
               </ul>
             </div>
-            <div class="cta"><a href="property-dispute.html"
+            <div (click)="openServiceEnquiryModal('GST')" class="cta"><a
+                class="button button-default button-light button-full text-center"><i style="color: #851c1c;"
+                  class="fas fa-eye"></i>&nbsp; View Details</a> </div>
+          </div>
+
+          <div class="card-wrapper text-left">
+            <div class="block-card match-height lightgrey-bg"
+              style="cursor: pointer !important; padding:30px; background: #fff;">
+              <div class="category text-center">Legal Documents</div>
+              <div class="text-center"><i style="font-size:50px; color: #851c1c;" class="fas fa-calculator"></i></div>
+              <br />
+              <div class="category text-center">Starting from ₹999/-</div>
+              <br />
+              <h4><b>Legal Documents</b></h4>
+              <br />
+              <ul class="list-unstyled">
+                <li style="font-weight: bold;margin-bottom:10px"><i style="color: #851c1c;"
+                    class="fa fa-angle-right"></i>&nbsp;Affidavits</li>
+                <li style="font-weight: bold;margin-bottom:10px"><i style="color: #851c1c;"
+                    class="fa fa-angle-right"></i>&nbsp;Agreements</li>
+                <li style="font-weight: bold;margin-bottom:10px"><i style="color: #851c1c;"
+                    class="fa fa-angle-right"></i>&nbsp;Marriage Registration</li>
+                <li style="font-weight: bold;margin-bottom:10px"><i style="color: #851c1c;"
+                    class="fa fa-angle-right"></i>&nbsp;Property Documents</li>
+                <li style="font-weight: bold;margin-bottom:10px"><i style="color: #851c1c;"
+                    class="fa fa-angle-right"></i>&nbsp;FIR & Police Services</li>
+                <li style="font-weight: bold;margin-bottom:10px"><i style="color: #851c1c;"
+                    class="fa fa-angle-right"></i>&nbsp;Vehicle Documents</li>
+                <li style="font-weight: bold;margin-bottom:10px"><i style="color: #851c1c;"
+                    class="fa fa-angle-right"></i>&nbsp;Identity & Certificates</li>
+                <li style="font-weight: bold;margin-bottom:10px"><i style="color: #851c1c;"
+                    class="fa fa-angle-right"></i>&nbsp;Utility & Government Services</li>
+              </ul>
+            </div>
+            <div (click)="openServiceEnquiryModal('Legal Documents')" class="cta"><a
                 class="button button-default button-light button-full text-center"><i style="color: #851c1c;"
                   class="fas fa-eye"></i>&nbsp; View Details</a> </div>
           </div>
@@ -177,42 +211,208 @@
       </div>
       <br /><br />
     </div>
-  </section>
-  <section class="other-services  border-bottom-default" style="margin-bottom:0px;">
-    <br /><br />
-    <div class="container">
-      <center>
-        <h2 style="padding-bottom:0px;">How to get legal help through KanoonKiBaat?</h2>
-      </center>
-      <br />
-      <div class="hidden-xs text-center">
-        <img src="assets/images/lawrato-help-desktop.png" width="50%" alt="KanoonKiBaat" />
-      </div>
-      <div class="visible-xs text-center">
-        <img src="assets/images/lawrato-help-mobile.png" width="100%" alt="KanoonKiBaat" />
+    <div class="content-wrapper">
+      <div class="row">
+        <div id="venue-amenities" class="col-lg-12 col-xs-12 colMb venue-amenities">
+          <ul style="list-style-type: none;">
+
+            <li class="col-sm-2 col-xs-6">
+              <a style="font-size: 14px;" title="Anticipatory Bail"
+                (click)="openServiceEnquiryModal('Anticipatory Bail')">
+                <p style="text-align: center;"><i style="font-size: 44px; color: #851c1c;" class="fa-gavel fas"></i></p>
+                <p
+                  style="text-align: center; white-space: nowrap; margin: 0!important; padding: 5px 0 10px!important;font-weight: bold;font-weight: bold;">
+                  Anticipatory Bail</p>
+                <p style="text-align: justify; font-size: 12px;">Seek legal protection before arrest to prevent
+                  unnecessary detention. Essential for those facing potential criminal charges.</p>
+              </a>
+            </li>
+
+            <li class="col-sm-2 col-xs-6">
+              <a style="font-size: 14px;" title="Arbitration" (click)="openServiceEnquiryModal('Arbitration')">
+                <p style="text-align: center;"><i style="font-size: 44px; color: #851c1c;"
+                    class="fa-balance-scale fas"></i></p>
+                <p
+                  style="text-align: center; white-space: nowrap; margin: 0!important; padding: 5px 0 10px!important;font-weight: bold;">
+                  Arbitration</p>
+                <p style="text-align: justify; font-size: 12px;">Resolve disputes efficiently without lengthy court
+                  battles. Arbitration helps parties reach a fair settlement through mutual.</p>
+              </a>
+            </li>
+
+            <li class="col-sm-2 col-xs-6">
+              <a style="font-size: 14px;" title="Armed Forces Tribunal"
+                (click)="openServiceEnquiryModal('Armed Forces Tribunal')">
+                <p style="text-align: center;"><i style="font-size: 44px; color: #851c1c;"
+                    class="fa-shield-alt fas"></i></p>
+                <p
+                  style="text-align: center; white-space: nowrap; margin: 0!important; padding: 5px 0 10px!important;font-weight: bold;">
+                  Armed Forces Tribunal</p>
+                <p style="text-align: justify; font-size: 12px;">Ensuring fair treatment and justice for military
+                  personnel in service-related disputes. Seek redressal for grievances efficiently.</p>
+              </a>
+            </li>
+
+            <li class="col-sm-2 col-xs-6">
+              <a style="font-size: 14px;" title="Banking and Finance"
+                (click)="openServiceEnquiryModal('Banking and Finance')">
+                <p style="text-align: center;"><i style="font-size: 44px; color: #851c1c;"
+                    class="fa-university fas"></i></p>
+                <p
+                  style="text-align: center; white-space: nowrap; margin: 0!important; padding: 5px 0 10px!important;font-weight: bold;">
+                  Banking and Finance</p>
+                <p style="text-align: justify; font-size: 12px;">Navigate complex financial regulations, banking
+                  disputes, and loan settlements with expert legal guidance.</p>
+              </a>
+            </li>
+
+            <li class="col-sm-2 col-xs-6">
+              <a style="font-size: 14px;" title="Bankruptcy and Insolvency"
+                (click)="openServiceEnquiryModal('Bankruptcy and Insolvency')">
+                <p style="text-align: center;"><i style="font-size: 44px; color: #851c1c;"
+                    class="fa-file-invoice-dollar fas"></i></p>
+                <p
+                  style="text-align: center; white-space: nowrap; margin: 0!important; padding: 5px 0 10px!important;font-weight: bold;">
+                  Bankruptcy and Insolvency</p>
+                <p style="text-align: justify; font-size: 12px;">Get expert legal support to manage financial distress,
+                  liquidate assets, and recover from debt efficiently.</p>
+              </a>
+            </li>
+
+            <li class="col-sm-2 col-xs-6">
+              <a style="font-size: 14px;" title="Breach of Contract"
+                (click)="openServiceEnquiryModal('Breach of Contract')">
+                <p style="text-align: center;"><i style="font-size: 44px; color: #851c1c;" class="fa-handshake fas"></i>
+                </p>
+                <p
+                  style="text-align: center; white-space: nowrap; margin: 0!important; padding: 5px 0 10px!important;font-weight: bold;">
+                  Breach of Contract</p>
+                <p style="text-align: justify; font-size: 12px;">Protect your business agreements and take legal action
+                  against unfair contract violations.</p>
+              </a>
+            </li>
+
+            <li class="col-sm-2 col-xs-6">
+              <a style="font-size: 14px;" title="Cheque Bounce" (click)="openServiceEnquiryModal('Cheque Bounce')">
+                <p style="text-align: center;"><i style="font-size: 44px; color: #851c1c;"
+                    class="fa-credit-card fas"></i></p>
+                <p
+                  style="text-align: center; white-space: nowrap; margin: 0!important; padding: 5px 0 10px!important;font-weight: bold;">
+                  Cheque Bounce</p>
+                <p style="text-align: justify; font-size: 12px;">Recover lost funds legally when a cheque is dishonored.
+                  Seek compensation and legal recourse.</p>
+              </a>
+            </li>
+
+            <li class="col-sm-2 col-xs-6">
+              <a style="font-size: 14px;" title="Child Custody" (click)="openServiceEnquiryModal('Child Custody')">
+                <p style="text-align: center;"><i style="font-size: 44px; color: #851c1c;" class="fa-child fas"></i></p>
+                <p
+                  style="text-align: center; white-space: nowrap; margin: 0!important; padding: 5px 0 10px!important;font-weight: bold;">
+                  Child Custody</p>
+                <p style="text-align: justify; font-size: 12px;">Secure the best interests of your child during custody
+                  disputes with expert legal assistance.</p>
+              </a>
+            </li>
+
+            <li class="col-sm-2 col-xs-6">
+              <a style="font-size: 14px;" title="Property" (click)="openServiceEnquiryModal('Property')">
+                <p style="text-align: center;"><i style="font-size: 44px; color: #851c1c;" class="fa-home fas"></i></p>
+                <p
+                  style="text-align: center; white-space: nowrap; margin: 0!important; padding: 5px 0 10px!important;font-weight: bold;">
+                  Property</p>
+                <p style="text-align: justify; font-size: 12px;">Protect your property rights with expert legal
+                  guidance, ensuring secure and hassle-free ownership.</p>
+              </a>
+            </li>
+
+            <li class="col-sm-2 col-xs-6">
+              <a style="font-size: 14px;" title="Divorce" (click)="openServiceEnquiryModal('Divorce')">
+                <p style="text-align: center;"><i style="font-size: 44px; color: #851c1c;"
+                    class="fa-heart-broken fas"></i></p>
+                <p
+                  style="text-align: center; white-space: nowrap; margin: 0!important; padding: 5px 0 10px!important;font-weight: bold;">
+                  Divorce</p>
+                <p style="text-align: justify; font-size: 12px;">Navigate your divorce with confidence—expert legal
+                  support to protect your rights and secure your future.</p>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-    <br />
-    <center>
-      <a href="legal-enquiry.html" class="button button-primary" style="background: #070808;">Get Started</a>
-    </center>
+
+  </section>
+
+  <section class="other-services border-b border-gray-300 py-12">
+
+
+    <div class="container">
+      <h2 class="text-center mb-5"><i class="fas fa-exclamation-circle text-danger"></i> Stuck with a Legal Issue? Let
+        KanoonKiBaat Help!</h2>
+
+      <div class="row justify-content-center">
+        <div class="col-md-4 mb-4">
+          <div class="card text-center p-4 shadow-lg">
+            <div class="d-flex align-items-center justify-content-center rounded-circle bg-light mb-3"
+              style="height: 64px;">
+              <i class="fas  fa-3x text-dark">1</i>
+            </div>
+            <i class="fas fa-file-alt fa-3x mb-3 text-gray-700"></i>
+            <h5 class="card-title mb-2" style="padding-top: 15px;">Describe Your Legal Issue</h5>
+            <p class="card-text">Share your legal concern in simple words—no complicated forms!</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card text-center p-4 border-primary shadow-lg">
+            <div class="d-flex align-items-center justify-content-center rounded-circle bg-light mb-3"
+              style="height: 64px;">
+              <i class="fas  fa-3x text-dark">2</i>
+            </div>
+            <i class="fas fa-user-tie fa-3x mb-3 text-primary"></i>
+            <h5 class="card-title mb-2" style="padding-top: 15px;">Find the Right Lawyer</h5>
+            <p class="card-text">Get connected to the right lawyer, tailored to your needs.</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card text-center p-4 border-success shadow-lg">
+            <div class="d-flex align-items-center justify-content-center rounded-circle bg-light mb-3"
+              style="height: 64px;">
+              <i class="fas  fa-3x text-dark">3</i>
+            </div>
+            <i class="fas fa-comments fa-3x mb-3 text-success"></i>
+            <h5 class="card-title mb-2" style="padding-top: 15px;">Get Advice & Take Action</h5>
+            <p class="card-text">Receive expert guidance and move forward with confidence.</p>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+
+      </div>
+    </div>
+
+
     <br />
   </section>
+
+
   <section id="home-top-rated" class="text-center top-rated lightgrey-bg" style="margin-bottom:0px;">
     <div class="container">
-      <h2><a href="lawyers.html" style="text-decoration:none; color:#000;">Top-rated lawyers in India</a></h2>
+      <h2><a href="lawyers.html" style="text-decoration:none; color:#000;"><i class="fas fa-user-tie"></i> Top Legal
+          Minds in India</a></h2>
       <div class="content-wrapper">
         <div class="carousel-top">
           <div class="card-wrapper text-left">
-            <div class="category">Divorce</div>
+            <div class="category">Criminal</div>
             <div class="block-card match-height"
               onclick="if (!window.__cfRLUnblockHandlers) return false; location.href = 'advocate-GG-ray.html';"
               style="cursor: pointer !important; background: #fff;" data-cf-modified-05d0d2aae7ca0399330e2962->
               <div class="media"> <span class="media-left"> <a href><img class="media-object"
-                      style="width:85px; height:113px;" src="assets/img/adv_avtar.png"
-                      title="Advocate GG  - KanoonKiBaat" alt="One of the best Advocates & Lawyers in
-Delhi - Advocate Sudershani Ray"></a> </span> <span class="media-body">
-                  <h4 class="media-heading"><a href="advocate-GG.html" title="Advocate GG">Advocate GG</a></h4>
+                      style="width:85px; height:113px;" src="assets/img/manish.jpg"
+                      title="Advocate Manish Gupta  - KanoonKiBaat" alt="One of the best Advocates & Lawyers in
+Delhi - Advocate GG"></a> </span> <span class="media-body">
+                  <h4 class="media-heading"><a href="advocate-GG.html" title="Advocate Manish Gupta">Advocate Manish
+                      Gupta</a></h4>
                   <div class="rating"> <span class="star-rating">
                       <img style="margin-right:5px; width:15px; height:15px;"
                         src="assets/img/sprite/icon/rating-star-full-icon.png" alt="Kanoonkibaat"><img
@@ -227,9 +427,42 @@ Delhi - Advocate Sudershani Ray"></a> </span> <span class="media-body">
                       class="score">
                       4.6 | 100+ user ratings</span> </div>
                   <div class="location"><img src="assets/img/sprite/icon/map-marker-icon.png"
-                      alt="Kanoonkibaat"><span>Kailash Hills, Delhi</span></div>
+                      alt="Kanoonkibaat"><span>Karkardooma, Delhi</span></div>
                   <div class="experience"><img src="assets/img/sprite/icon/suitcase-icon.png" alt="Kanoonkibaat"><span>
-                      17 years Experience</span></div>
+                      9 years Experience</span></div>
+                </span> </div>
+              PRACTICE AREAS: Criminal + 3 more
+            </div>
+            <div class="cta"><a href="civil-lawyers.html"
+                class="button button-default button-full button-light text-center">View more Criminal Lawyers</a> </div>
+          </div>
+          <div class="card-wrapper text-left">
+            <div class="category">Divorce</div>
+            <div class="block-card match-height"
+              onclick="if (!window.__cfRLUnblockHandlers) return false; location.href = 'advocate-GG-ray.html';"
+              style="cursor: pointer !important; background: #fff;" data-cf-modified-05d0d2aae7ca0399330e2962->
+              <div class="media"> <span class="media-left"> <a href><img class="media-object"
+                      style="width:85px; height:113px;" src="assets/img/aa.jpg" title="Advocate Ravi  - KanoonKiBaat"
+                      alt="One of the best Advocates & Lawyers in
+Delhi - Advocate Advocate Ravi"></a> </span> <span class="media-body">
+                  <h4 class="media-heading"><a href="advocate-GG.html" title="Advocate GG">Advocate Ravi</a></h4>
+                  <div class="rating"> <span class="star-rating">
+                      <img style="margin-right:5px; width:15px; height:15px;"
+                        src="assets/img/sprite/icon/rating-star-full-icon.png" alt="Kanoonkibaat"><img
+                        style="margin-right:5px; width:15px; height:15px;"
+                        src="assets/img/sprite/icon/rating-star-full-icon.png" alt="Kanoonkibaat"><img
+                        style="margin-right:5px; width:15px; height:15px;"
+                        src="assets/img/sprite/icon/rating-star-full-icon.png" alt="Kanoonkibaat"><img
+                        style="margin-right:5px; width:15px; height:15px;"
+                        src="assets/img/sprite/icon/rating-star-full-icon.png" alt="Kanoonkibaat"><img
+                        style="margin-right:5px; width:15px; height:15px;"
+                        src="assets/img/sprite/icon/rating-star-half-icon.png" alt="Kanoonkibaat"> </span> <span
+                      class="score">
+                      4.6 | 100+ user ratings</span> </div>
+                  <div class="location"><img src="assets/img/sprite/icon/map-marker-icon.png"
+                      alt="Kanoonkibaat"><span>Karkardooma, Delhi</span></div>
+                  <div class="experience"><img src="assets/img/sprite/icon/suitcase-icon.png" alt="Kanoonkibaat"><span>
+                      1+ years Experience</span></div>
                 </span> </div>
               PRACTICE AREAS: Divorce + 3 more
             </div>
@@ -243,10 +476,10 @@ Delhi - Advocate Sudershani Ray"></a> </span> <span class="media-body">
               onclick="if (!window.__cfRLUnblockHandlers) return false; location.href = 'advocate-GG-ray.html';"
               style="cursor: pointer !important; background: #fff;" data-cf-modified-05d0d2aae7ca0399330e2962->
               <div class="media"> <span class="media-left"> <a href><img class="media-object"
-                      style="width:85px; height:113px;" src="assets/img/adv_avtar.png"
-                      title="Advocate GG  - KanoonKiBaat" alt="One of the best Advocates & Lawyers in
-Delhi - Advocate Sudershani Ray"></a> </span> <span class="media-body">
-                  <h4 class="media-heading"><a href="advocate-GG.html" title="Advocate GG">Advocate GG</a></h4>
+                      style="width:85px; height:113px;" src="assets/img/bb.jpg" title="Advocate GG  - KanoonKiBaat" alt="One of the best Advocates & Lawyers in
+Delhi - Advocate Rajveer"></a> </span> <span class="media-body">
+                  <h4 class="media-heading"><a href="advocate-GG.html" title="Advocate Rajveer">Advocate Rajveer</a>
+                  </h4>
                   <div class="rating"> <span class="star-rating">
                       <img style="margin-right:5px; width:15px; height:15px;"
                         src="assets/img/sprite/icon/rating-star-full-icon.png" alt="Kanoonkibaat"><img
@@ -261,48 +494,16 @@ Delhi - Advocate Sudershani Ray"></a> </span> <span class="media-body">
                       class="score">
                       4.6 | 100+ user ratings</span> </div>
                   <div class="location"><img src="assets/img/sprite/icon/map-marker-icon.png"
-                      alt="Kanoonkibaat"><span>Kailash Hills, Delhi</span></div>
+                      alt="Kanoonkibaat"><span>Karkardooma, Delhi</span></div>
                   <div class="experience"><img src="assets/img/sprite/icon/suitcase-icon.png" alt="Kanoonkibaat"><span>
-                      17 years Experience</span></div>
+                      1+ years Experience</span></div>
                 </span></div>
               PRACTICE AREAS: Family + 3 more
             </div>
             <div class="cta"><a href="family-lawyers.html"
                 class="button button-default button-full button-light text-center">View more Family Lawyers</a> </div>
           </div>
-          <div class="card-wrapper text-left">
-            <div class="category">Civil</div>
-            <div class="block-card match-height"
-              onclick="if (!window.__cfRLUnblockHandlers) return false; location.href = 'advocate-GG-ray.html';"
-              style="cursor: pointer !important; background: #fff;" data-cf-modified-05d0d2aae7ca0399330e2962->
-              <div class="media"> <span class="media-left"> <a href><img class="media-object"
-                      style="width:85px; height:113px;" src="assets/img/adv_avtar.png"
-                      title="Advocate GG  - KanoonKiBaat" alt="One of the best Advocates & Lawyers in
-Delhi - Advocate GG"></a> </span> <span class="media-body">
-                  <h4 class="media-heading"><a href="advocate-GG.html" title="Advocate GG">Advocate GG</a></h4>
-                  <div class="rating"> <span class="star-rating">
-                      <img style="margin-right:5px; width:15px; height:15px;"
-                        src="assets/img/sprite/icon/rating-star-full-icon.png" alt="Kanoonkibaat"><img
-                        style="margin-right:5px; width:15px; height:15px;"
-                        src="assets/img/sprite/icon/rating-star-full-icon.png" alt="Kanoonkibaat"><img
-                        style="margin-right:5px; width:15px; height:15px;"
-                        src="assets/img/sprite/icon/rating-star-full-icon.png" alt="Kanoonkibaat"><img
-                        style="margin-right:5px; width:15px; height:15px;"
-                        src="assets/img/sprite/icon/rating-star-full-icon.png" alt="Kanoonkibaat"><img
-                        style="margin-right:5px; width:15px; height:15px;"
-                        src="assets/img/sprite/icon/rating-star-half-icon.png" alt="Kanoonkibaat"> </span> <span
-                      class="score">
-                      4.6 | 100+ user ratings</span> </div>
-                  <div class="location"><img src="assets/img/sprite/icon/map-marker-icon.png"
-                      alt="Kanoonkibaat"><span>Kailash Hills, Delhi</span></div>
-                  <div class="experience"><img src="assets/img/sprite/icon/suitcase-icon.png" alt="Kanoonkibaat"><span>
-                      17 years Experience</span></div>
-                </span> </div>
-              PRACTICE AREAS: Civil + 3 more
-            </div>
-            <div class="cta"><a href="civil-lawyers.html"
-                class="button button-default button-full button-light text-center">View more Civil Lawyers</a> </div>
-          </div>
+
           <div class="card-wrapper text-left">
             <div class="category">Labour & Service</div>
             <div class="block-card match-height"
@@ -312,7 +513,7 @@ Delhi - Advocate GG"></a> </span> <span class="media-body">
                       style="width:85px; height:113px;" src="assets/img/adv_avtar.png"
                       title="Advocate GG  - KanoonKiBaat" alt="One of the best Advocates & Lawyers in
 Delhi - Advocate Sudershani Ray"></a> </span> <span class="media-body">
-                  <h4 class="media-heading"><a href="advocate-GG.html" title="Advocate GG">Advocate GG</a></h4>
+                  <h4 class="media-heading"><a href="advocate-GG.html" title="Advocate GG">Advocate Gaurav</a></h4>
                   <div class="rating"> <span class="star-rating">
                       <img style="margin-right:5px; width:15px; height:15px;"
                         src="assets/img/sprite/icon/rating-star-full-icon.png" alt="Kanoonkibaat"><img
@@ -358,7 +559,7 @@ Delhi - Advocate Sudershani Ray"></a> </span> <span class="media-body">
       <br /><br />
     </div>
   </section>
-  <section id="home-legal-answers" class="text-center legal-answer after-section" style="margin-bottom:1px;">
+  <!--section id="home-legal-answers" class="text-center legal-answer after-section" style="margin-bottom:1px;">
     <div class="block-container border-top-default border-bottom-default">
       <div class="container">
         <div class="row">
@@ -410,7 +611,7 @@ Delhi - Advocate Sudershani Ray"></a> </span> <span class="media-body">
         </div>
       </div>
     </div>
-  </section>
+  </section-->
 
   <section class="text-center top-rated lightgrey-bg" style="margin-bottom:0px; background:#303030;">
     <div class="container">
@@ -652,7 +853,7 @@ Delhi - Advocate Sudershani Ray"></a> </span> <span class="media-body">
       </div>
     </div>
   </section>
-  <section id="home-law-guides" class="text-center law-guides">
+  <!--section id="home-law-guides" class="text-center law-guides">
     <div class="block-container border-top-default border-bottom-default lightgrey-bg">
       <div class="container">
         <div class="row">
@@ -700,7 +901,7 @@ Delhi - Advocate Sudershani Ray"></a> </span> <span class="media-body">
         </div>
       </div>
     </div>
-  </section>
+  </section-->
   <section id="home-featured" class="text-center featured-in after-section">
     <div class="container">
       <center>
@@ -719,7 +920,7 @@ Delhi - Advocate Sudershani Ray"></a> </span> <span class="media-body">
           <div class="col-sm-2" style="padding:10px;"><img loading="lazy" width="170" height="47" class="img-responsive"
               src="assets/images/amar-ujala.jpg" alt="Kanoonkibaat"></div>
         </div>
-        <a style="margin-top:30px;" href="press-media.html" class="button button-primary">See All Media Coverage</a>
+
       </center>
     </div>
   </section>

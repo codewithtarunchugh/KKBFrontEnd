@@ -1,5 +1,10 @@
+<!-- Modal for FAQ content -->
+<div class="modal" *ngIf="isCallModalOpen">
+  <div class="modal-content">
+
+
 <div class="container" style="min-height: 350px;margin-top: 10px;">
-  <h2 class="text-center"><i class="fas fa-question-circle"></i>&nbsp;Your Inquiry Matters – Let Us Assist You!</h2>
+  <h2 class="text-center"><i class="fas fa-question-circle"></i>&nbsp;Your Inquiry Matters – Let Us Assist You! <span class="close" (click)="closeCallModal()">&times;</span></h2>
   <br />
   <center>
     <div class="progress">
@@ -387,8 +392,9 @@
 
     <div *ngIf="currentStep === 8">
 <br/><br/>
-  <h3>Thanks, {{ finalData.title | uppercase  }}. {{ finalData.firstName | uppercase }} {{ finalData.lastName | uppercase  }}. We will call your shortly. </h3>
+  <h3>Thanks, {{ finalData.title | uppercase  }}. {{ finalData.firstName | uppercase }} {{ finalData.lastName | uppercase  }}. We will call you shortly. </h3>
 
       </div>
   </center>
 </div>
+</div></div>

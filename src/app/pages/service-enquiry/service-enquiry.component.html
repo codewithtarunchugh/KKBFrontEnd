@@ -1,0 +1,400 @@
+<!-- Modal for FAQ content -->
+<div class="modal" *ngIf="isServiceEnquiryModalOpen">
+  <div class="modal-content">
+
+
+<div class="container" style="min-height: 350px;margin-top: 10px;">
+  <h2 class="text-center"><i class="fas fa-question-circle"></i>&nbsp;Your Inquiry Matters – Let Us Assist You! <span class="close" (click)="closeServiceEnquiryModal()">&times;</span></h2>
+  <br />
+  <center>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" [style.width]="progressPercentage + '%'" aria-valuenow="50"
+        aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+
+    <div *ngIf="currentStep === 0">
+      <h3>Please Select Service Type</h3>
+      <div class="row">
+        <div class="col-sm-4 col-xs-6 col-6" *ngFor="let serviceType of serviceTypes">
+          <div class="card" (click)="selectCaseType(serviceType)" [ngClass]="{'selected': selectedCaseType === serviceType}">
+            <div class="card-body text-center">
+              <div>
+                <i class="{{ serviceType.icon }}"></i>
+              </div>
+              <div>
+                <span>{{ serviceType.name }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="currentStep === 1">
+      <h3>Please Select Service Category</h3>
+      <div class="row">
+        <div class="col-md-3 col-sm-4 col-xs-6 col-6" *ngFor="let subGroup of selectedCaseType.subGroups">
+          <div class="card" (click)="selectSubGroup(subGroup)" [ngClass]="{'selected': selectedSubGroup === subGroup}">
+            <div class="card-body text-center">
+              <div>
+                <i class="{{ subGroup.icon }}"></i>
+              </div>
+              <div>
+                <span>{{ subGroup.name }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button (click)="goBack()"><i class="fa fa-arrow-left"></i>&nbsp;Back</button>
+    </div>
+
+    <div *ngIf="currentStep === 2">
+      <h3>Please Select State</h3>
+      <div class="row">
+        <div class="col-md-3 col-sm-4 col-xs-6 col-6" *ngFor="let stateOption of states">
+          <div class="card" (click)="selectState(stateOption)" [ngClass]="{'selected': state === stateOption.name}">
+            <div class="card-body text-center">
+              <div>
+                <i class="{{ stateOption.icon }}"></i>
+              </div>
+              <div>
+                <span>{{ stateOption.name }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button (click)="goBack()"><i class="fa fa-arrow-left"></i>&nbsp;Back</button>
+    </div>
+
+    <div *ngIf="currentStep === 3">
+      <h3>Please Select City</h3>
+      <div class="row" *ngIf="state">
+        <div class="col-md-3 col-sm-4 col-xs-6 col-6" *ngFor="let cityOption of cities[state]">
+          <div class="card" (click)="selectCity(cityOption)" [ngClass]="{'selected': city === cityOption.name}">
+            <div class="card-body text-center">
+              <div>
+                <i class="{{ cityOption.icon }}"></i>
+              </div>
+              <div>
+                <span>{{ cityOption.name }}</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <button (click)="goBack()"><i class="fa fa-arrow-left"></i>&nbsp;Back</button>
+
+
+    </div>
+    <div *ngIf="currentStep === 4">
+      <h3> We would love to know how you found us!</h3>
+      <div class="row" *ngIf="state">
+        <div class="col-md-3 col-sm-4 col-xs-6 col-6" *ngFor="let advertisementOptions of advertisements">
+          <div class="card" (click)="selectAdvertisement(advertisementOptions)" [ngClass]="{'selected': advertisement === advertisementOptions.name}">
+            <div class="card-body text-center">
+              <div>
+                <img style="height:80px;width: 80px;" src="assets/img/social/{{ advertisementOptions.image }}" >
+
+              </div>
+              <div>
+                <span>{{ advertisementOptions.name }}</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <button (click)="goBack()"><i class="fa fa-arrow-left"></i>&nbsp;Back</button>
+
+    </div>
+
+    <div *ngIf="currentStep === 5" class="pin-code-container">
+      <h3>Please Enter Your Pin Code</h3>
+      <form #pinCodeForm="ngForm" (ngSubmit)="submitPinCode()" novalidate>
+        <div class="row" *ngIf="state">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body text-center">
+                <div class="form-group" *ngIf="advertisement">
+                  <div class="col-xs-12">
+                    <input
+                      type="text"
+                      placeholder="Enter Pin Code"
+                      id="pinCode"
+                      [(ngModel)]="pinCode"
+                      name="pinCode"
+                      required
+                      minlength="6"
+                      maxlength="6"
+                      pattern="\d{6}"
+                      (keyup.enter)="submitPinCode()"
+                      class="form-control"
+                      [ngClass]="{
+                        'is-invalid': pinCodeForm.controls['pinCode'] && pinCodeForm.controls['pinCode'].invalid &&
+                                      (pinCodeForm.controls['pinCode'].touched || pinCodeForm.controls['pinCode'].dirty)
+                      }"
+                    />
+                    <div *ngIf="pinCodeForm.controls['pinCode'] && pinCodeForm.controls['pinCode'].invalid &&
+                                (pinCodeForm.controls['pinCode'].touched || pinCodeForm.controls['pinCode'].dirty)"
+                                class="invalid-feedback">
+                      <div *ngIf="pinCodeForm.controls['pinCode'].errors?.['required']">Pin Code is required.</div>
+                      <div *ngIf="pinCodeForm.controls['pinCode'].errors?.['pattern']">Pin Code must be numeric and exactly 6 digits long.</div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="button-group">
+          <button type="button" (click)="goBack()">
+            <i class="fa fa-arrow-left"></i>&nbsp;Back
+          </button>&nbsp;&nbsp;
+          <button type="submit" [disabled]="pinCodeForm.invalid">
+            Next &nbsp;<i class="fa fa-arrow-right"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+
+
+    <div *ngIf="currentStep === 6" class="pin-code-container">
+      <h3>Please Enter Your Personal Details</h3>
+      <form #phoneForm="ngForm" (ngSubmit)="submitDetails()" novalidate>
+        <div class="row">
+          <!-- Title -->
+          <div class="col-md-4">
+            <div class="form-group">
+              <select
+                id="title"
+                [(ngModel)]="title"
+                name="title"
+                required
+                class="form-control"
+                [ngClass]="{
+                  'is-invalid': phoneForm.controls['title'] && phoneForm.controls['title'].invalid &&
+                                (phoneForm.controls['title'].touched || phoneForm.controls['title'].dirty)
+                }"
+              >
+                <option value="">Select Title</option>
+                <option value="Mr">Mr</option>
+                <option value="Ms">Ms</option>
+                <option value="Mrs">Mrs</option>
+                <option value="Dr">Dr</option>
+                <option value="Prof">Prof</option>
+              </select>
+              <div *ngIf="phoneForm.controls['title'] && phoneForm.controls['title'].invalid &&
+                          (phoneForm.controls['title'].touched || phoneForm.controls['title'].dirty)" class="invalid-feedback">
+                Title is required.
+              </div>
+            </div>
+          </div>
+
+          <!-- First Name -->
+          <div class="col-md-4">
+            <div class="form-group">
+              <input
+                type="text"
+                id="firstName"
+                placeholder="Enter First Name"
+                [(ngModel)]="firstName"
+                name="firstName"
+                required
+                class="form-control"
+                [ngClass]="{
+                  'is-invalid': phoneForm.controls['firstName'] && phoneForm.controls['firstName'].invalid &&
+                                (phoneForm.controls['firstName'].touched || phoneForm.controls['firstName'].dirty)
+                }"
+              />
+              <div *ngIf="phoneForm.controls['firstName'] && phoneForm.controls['firstName'].invalid &&
+                          (phoneForm.controls['firstName'].touched || phoneForm.controls['firstName'].dirty)" class="invalid-feedback">
+                First Name is required.
+              </div>
+            </div>
+          </div>
+
+          <!-- Last Name -->
+          <div class="col-md-4">
+            <div class="form-group">
+              <input
+                type="text"
+                id="lastName"
+                placeholder="Enter Last Name"
+                [(ngModel)]="lastName"
+                name="lastName"
+                required
+                class="form-control"
+                [ngClass]="{
+                  'is-invalid': phoneForm.controls['lastName'] && phoneForm.controls['lastName'].invalid &&
+                                (phoneForm.controls['lastName'].touched || phoneForm.controls['lastName'].dirty)
+                }"
+              />
+              <div *ngIf="phoneForm.controls['lastName'] && phoneForm.controls['lastName'].invalid &&
+                          (phoneForm.controls['lastName'].touched || phoneForm.controls['lastName'].dirty)" class="invalid-feedback">
+                Last Name is required.
+              </div>
+            </div>
+          </div>
+
+          <!-- Email Address -->
+          <div class="col-md-4">
+            <div class="form-group">
+              <input
+                type="email"
+                id="email"
+                placeholder="Enter Email Address"
+                [(ngModel)]="email"
+                name="email"
+                required
+                email
+                class="form-control"
+                [ngClass]="{
+                  'is-invalid': phoneForm.controls['email'] && phoneForm.controls['email'].invalid &&
+                                (phoneForm.controls['email'].touched || phoneForm.controls['email'].dirty)
+                }"
+              />
+              <div *ngIf="phoneForm.controls['email'] && phoneForm.controls['email'].invalid &&
+                          (phoneForm.controls['email'].touched || phoneForm.controls['email'].dirty)" class="invalid-feedback">
+                <div *ngIf="phoneForm.controls['email'].errors?.['required']">Email Address is required.</div>
+                <div *ngIf="phoneForm.controls['email'].errors?.['email']">Please enter a valid email address.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Phone Number -->
+          <div class="col-md-4">
+            <div class="form-group">
+              <input
+                type="text"
+                placeholder="Enter Phone Number"
+                id="phone"
+                [(ngModel)]="phone"
+                name="phone"
+                required
+                minlength="10"
+                maxlength="10"
+                pattern="\d{10}"
+                (keyup.enter)="submitDetails()"
+                class="form-control"
+                [ngClass]="{
+                  'is-invalid': phoneForm.controls['phone'] && phoneForm.controls['phone'].invalid &&
+                                (phoneForm.controls['phone'].touched || phoneForm.controls['phone'].dirty)
+                }"
+              />
+              <div *ngIf="phoneForm.controls['phone'] && phoneForm.controls['phone'].invalid &&
+                          (phoneForm.controls['phone'].touched || phoneForm.controls['phone'].dirty)" class="invalid-feedback">
+                <div *ngIf="phoneForm.controls['phone'].errors?.['required']">Phone Number is required.</div>
+                <div *ngIf="phoneForm.controls['phone'].errors?.['pattern']">Phone must be numeric and exactly 10 digits long.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Remarks -->
+          <div class="col-md-4">
+            <div class="form-group">
+              <textarea
+                id="remarks"
+                maxlength="200"
+                placeholder="Enter Remarks"
+                [(ngModel)]="remarks"
+                name="remarks"
+                class="form-control"
+                rows="4"
+                [ngClass]="{
+                  'is-invalid': phoneForm.controls['remarks'] && phoneForm.controls['remarks'].invalid &&
+                                (phoneForm.controls['remarks'].touched || phoneForm.controls['remarks'].dirty)
+                }"
+              ></textarea>
+              <div *ngIf="phoneForm.controls['remarks'] && phoneForm.controls['remarks'].invalid &&
+                          (phoneForm.controls['remarks'].touched || phoneForm.controls['remarks'].dirty)" class="invalid-feedback">
+                Remarks are required.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="button-group">
+          <button type="button" (click)="goBack()">
+            <i class="fa fa-arrow-left"></i>&nbsp;Back
+          </button>&nbsp;&nbsp;
+          <button type="submit" [disabled]="phoneForm.invalid">
+            Next &nbsp;<i class="fa fa-arrow-right"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+
+
+    <div *ngIf="currentStep === 7">
+      <h3>Please Review Your Details</h3>
+      <table class="table" style="width: 50%;padding: 10px;">
+        <tr>
+          <td style="width:30%"><b>Case Type</b></td>
+          <td style="width:5%"><b>:</b></td>
+          <td>{{ finalData.caseType }}</td>
+        </tr>
+        <tr>
+          <td><b>Sub Case Type</b></td>
+          <td><b>:</b></td>
+          <td>{{ finalData.subCaseType }}</td>
+        </tr>
+        <tr>
+          <td><b>State</b></td>
+          <td><b>:</b></td>
+          <td>{{ finalData.state }}</td>
+        </tr>
+        <tr>
+          <td><b>City</b></td>
+          <td><b>:</b></td>
+          <td>{{ finalData.city }}</td>
+        </tr>
+        <tr>
+          <td><b>Pin</b></td>
+          <td><b>:</b></td>
+          <td>{{ finalData.pin }}</td>
+        </tr>
+        <tr>
+          <td><b>Name</b></td>
+          <td><b>:</b></td>
+          <td>{{ finalData.title }} {{ finalData.firstName }} {{ finalData.lastName }}</td>
+        </tr>
+        <tr>
+          <td><b>Email</b></td>
+          <td><b>:</b></td>
+          <td>{{ finalData.email }}</td>
+        </tr>
+
+        <tr>
+          <td><b>Phone</b></td>
+          <td><b>:</b></td>
+          <td>{{ finalData.phone }}</td>
+        </tr>
+      <tr>
+        <td style="vertical-align: top;"><b>Remarks</b></td>
+        <td style="vertical-align: top;"><b>:</b></td>
+        <div style="white-space: normal; word-wrap: break-word; max-width: 400px; max-height: 200px; overflow: auto; overflow-wrap: break-word; text-align: justify;">
+          {{ finalData.remarks }}
+        </div>
+      </tr>
+
+    </table>
+
+      <button (click)="goBack()"><i class="fa fa-arrow-left"></i>&nbsp;Go Back</button>&nbsp;&nbsp;&nbsp;
+      <button (click)="saveData()"><i class="fas fa-save"></i>&nbsp;Submit</button>
+    </div>
+
+    <div *ngIf="currentStep === 8">
+<br/><br/>
+  <h3>Thanks, {{ finalData.title | uppercase  }}. {{ finalData.firstName | uppercase }} {{ finalData.lastName | uppercase  }}. We will call you shortly. </h3>
+
+      </div>
+  </center>
+</div>
+</div></div>

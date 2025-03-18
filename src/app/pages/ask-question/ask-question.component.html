@@ -1,5 +1,9 @@
+<!-- Modal for FAQ content -->
+<div class="modal" *ngIf="isAskQuestionModalOpen">
+  <div class="modal-content">
+
 <div class="container" style="min-height: 350px;margin-top: 10px;">
-  <h2 class="text-center"><i class="fa-file-alt fas"></i>&nbsp;Have a Legal Question? Get Free Advice Online, Instantly!
+  <h2 class="text-center"><i class="fa-file-alt fas"></i>&nbsp;Have a Legal Question? Get Free Advice Online, Instantly! <span class="close" (click)="closeAskQuestionModal()">&times;</span>
   </h2>
   <br />
   <center>
@@ -374,8 +378,9 @@
     <div *ngIf="currentStep === 8">
       <br /><br />
       <h3>Thanks, {{ finalData.title | uppercase }}. {{ finalData.firstName | uppercase }} {{ finalData.lastName |
-        uppercase }}. We will receive answer to your query on your email from our expert lawyers. </h3>
+        uppercase }}. You will receive answer to your query on your email from our expert lawyers. </h3>
 
     </div>
   </center>
 </div>
+</div></div>

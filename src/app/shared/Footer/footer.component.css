@@ -1,6 +1,27 @@
-
 .nalsa-logo-footer {
   width: 70%;
   padding: 5px 20px;
   background: white;
+}
+
+.phone-footer {
+  font-size: 60px;
+  color: #fff;
+}
+
+.phone-icon {
+  font-size: 60px;
+  color: #fff;
+}
+
+@media (max-width: 767px) {
+  .phone-footer {
+    font-size: 40px;
+    color: #fff;
+  }
+
+  .phone-icon {
+    font-size: 40px;
+    color: #fff;
+  }
 }

@@ -17,3 +17,7 @@ export interface ISearchQuestionRequest {
   pageSize?: number;
   pageIndex?: number;
 }
+export interface IFAQRequest {
+  categoryId?: number;
+  categoryName?: string;
+}

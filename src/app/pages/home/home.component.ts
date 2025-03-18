@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/core/services/category/category.service';
+import { MiscService } from 'src/app/core/services/Misc/misc.service';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,7 @@ import { CategoryService } from 'src/app/core/services/category/category.service
 export class HomeComponent {
   categoriesListCount: any[] = [];
   totalQuestionCount: number = 0;
-  constructor(private categoryService: CategoryService) {}
+  constructor(private categoryService: CategoryService, private miscService: MiscService,) {}
 
   ngOnInit(): void {
     this.getCategoryListCount();
@@ -33,5 +34,14 @@ export class HomeComponent {
         // Handle the error here (e.g., show an error message to the user)
       }
     );
+  }
+  openCallModal() {
+    this.miscService.openCallModal(); // Use the service to open the modal
+  }
+  openServiceEnquiryModal(serviceType:any) {    
+    this.miscService.openServiceEnquiryModal(serviceType); // Use the service to open the modal
+  }
+  openAskQuestionModal() {
+    this.miscService.openAskQuestionModal(); // Use the service to open the modal
   }
 }

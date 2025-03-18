@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { IEnquiryRequest } from 'src/app/core/Models/interfaces/content';
+import { EnquiryService } from 'src/app/core/services/enquiry/enquiry.service';
+import { MiscService } from 'src/app/core/services/Misc/misc.service';
 
 interface City {
   name: string;
@@ -14,7 +18,26 @@ interface Cities {
   templateUrl: './ask-question.component.html',
   styleUrls: ['./ask-question.component.css'],
 })
-export class AskQuestionComponent implements OnInit {
+export class AskQuestionComponent implements OnInit, OnDestroy {
+   enquiryRequest:IEnquiryRequest={
+      EnquiryType: '',
+    CaseType: '',
+    CaseCategory: '',
+    State: '',
+    City: '',
+    Pincode: '',
+    Howfound: '',
+    Title : '',
+    FirstName: '',
+    LastName: '',
+    Email: '',
+    Phone: '',
+    Remarks : '',
+    Subject: '',
+    Question: '',
+    };
+  modalSubscription: Subscription = new Subscription();
+  isAskQuestionModalOpen = true; // Control the modal visibility
   caseTypes = [
     {
       id: 1,
@@ -317,10 +340,25 @@ export class AskQuestionComponent implements OnInit {
     remarks: '',
     subject: '',
   };
-  constructor() {}
+  constructor(private miscService: MiscService, private enquiryService: EnquiryService) {}
 
-  ngOnInit(): void {}
-
+  ngOnInit(): void {
+    // Subscribe to modal visibility changes from the service
+    this.modalSubscription =
+      this.miscService.askQuestionModalVisibility$.subscribe((isOpen) => {
+        this.isAskQuestionModalOpen = isOpen;
+      });
+  }
+  ngOnDestroy(): void {
+    // Unsubscribe to avoid memory leaks
+    if (this.modalSubscription) {
+      this.modalSubscription.unsubscribe();
+    }
+  }
+  closeAskQuestionModal(): void {
+    this.isAskQuestionModalOpen = false;
+    this.miscService.closeAskQuestionModal(); // Close modal using the service
+  }
   selectCaseType(caseType: any) {
     this.selectedCaseType = caseType;
     this.finalData.caseType = caseType.name;
@@ -380,13 +418,38 @@ export class AskQuestionComponent implements OnInit {
     this.finalData.email = this.email;
     this.finalData.subject = this.subject;
     this.finalData.remarks = this.remarks;
-
     this.finalData.phone = this.phone;
   }
   get progressPercentage() {
     return this.currentStep * 14.25;
   }
   saveData() {
+    this.enquiryRequest.EnquiryType='Ask Question';
+    this.enquiryRequest.CaseType=this.finalData.caseType;
+    this.enquiryRequest.CaseCategory=this.finalData.subCaseType;
+    this.enquiryRequest.State=this.finalData.state;
+    this.enquiryRequest.City=this.finalData.city;
+    this.enquiryRequest.Howfound=this.finalData.advertisement;
+    this.enquiryRequest.Pincode=this.finalData.pin;
+    this.enquiryRequest.Title=this.finalData.title;
+    this.enquiryRequest.FirstName=this.finalData.firstName;
+    this.enquiryRequest.LastName=this.finalData.lastName;
+    this.enquiryRequest.Email=this.finalData.email;
+    this.enquiryRequest.Remarks='';
+    this.enquiryRequest.Phone=this.finalData.phone;   
+    this.enquiryRequest.Question=this.finalData.remarks;
+    this.enquiryRequest.Subject=this.finalData.subject;
+    
+    this.enquiryService.InsertEnquiry(this.enquiryRequest).subscribe(
+      (response) => {
+        console.log(response.data);
+      },
+      (error) => {
+        console.error('Error Inserting data', error);
+        // Handle the error here (e.g., show an error message to the user)
+      }
+    );   
+
     this.currentStep = 8; // Move to the next step
   }
 }

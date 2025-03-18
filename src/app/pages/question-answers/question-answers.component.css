@@ -1,114 +1,194 @@
+/* Modal Styling */
+.modal {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark background */
+  z-index: 1000;
+  overflow: auto; /* Allow scrolling of the modal */
+}
+
+/* Modal content styling */
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the modal */
+  background-color: #fff;
+  width: 90%; /* Width set to 90% of the screen */
+  max-width: 900px; /* Maximum width */
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  max-height: 80vh; /* Maximum height of the modal */
+  overflow-y: auto; /* Enable vertical scrolling */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Close button */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  text-decoration: none;
+}
+h2.text-center {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  padding: 10px 0;
+  z-index: 10; /* Keep it above the content */
+  border-bottom: 2px solid #f0f0f0;
+  margin: 0; /* Remove margin */
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+/* Sticky Question Title */
 .question-title {
-    font-size: 28px;
-    font-weight: bold;
-    color: #333;
+  position: sticky;
+  top: 0; /* Stick to the top of the modal */
+  background-color: #fff;
+  padding: 10px 0;
+  z-index: 10; /* Ensure it's on top of other content */
+  border-bottom: 2px solid #f0f0f0;
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: add shadow for better visibility */
+  padding-left: 10px;
+  padding-right: 10px;
+  overflow: hidden; /* Prevents overflow of text if necessary */
 }
+
+/* Question content styling */
 .question-meta {
-    font-size: 14px;
-    color: #777;
+  font-size: 14px;
+  color: #777;
 }
+
 .question-content {
-    border: 2px solid #ddd;
-    padding: 20px;
-    margin-top: 10px;
-    background-color: #fff;
-    border-radius: 8px;
-    text-align: justify;
+  border: 2px solid #ddd;
+  padding: 20px;
+  margin-top: 10px;
+  background-color: #fff;
+  border-radius: 8px;
+  text-align: justify;
 }
+
+/* Answers styling */
 .answers-title {
-    font-size: 22px;
-    font-weight: bold;
-    margin-top: 30px;
-    color: #333;
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 30px;
+  color: #333;
 }
+
+/* Timeline and other content styling */
 .timeline {
-    position: relative;
-    margin-top: 20px;
+  position: relative;
+  margin-top: 20px;
 }
+
 .timeline::before {
-    content: '';
-    position: absolute;
-    width: 4px;
-    background-color: #ddd;
-    top: 0;
-    bottom: 0;
-    left: 20px;
-    margin-left: -2px;
+  content: '';
+  position: absolute;
+  width: 4px;
+  background-color: #ddd;
+  top: 0;
+  bottom: 0;
+  left: 20px;
+  margin-left: -2px;
 }
+
 .timeline-item {
-    padding: 20px;
-    position: relative;
-    background-color: inherit;
-    width: 100%;
-    padding-left: 60px;
+  padding: 20px;
+  position: relative;
+  background-color: inherit;
+  width: 100%;
+  padding-left: 60px;
 }
+
 .timeline-item::after {
-    content: '';
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    left: 8px;
-    background-color: white;
-    border: 4px solid #000;
-    top: 15px;
-    border-radius: 50%;
-    z-index: 1;
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  left: 8px;
+  background-color: white;
+  border: 4px solid #000;
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
 }
+
 .timeline-item .card {
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-    border: 2px solid #ddd;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  border: 2px solid #ddd;
 }
+
 .timeline-item .card:hover {
-    transform: scale(1.02);
+  transform: scale(1.02);
 }
+
 .answer-meta {
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #555;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #555;
 }
+
 .advocate-info {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 }
+
 .advocate-info img {
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-    border: 2px solid #ddd;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  border: 2px solid #ddd;
 }
+
 .advocate-info .advocate-name {
-    font-weight: bold;
-    color: #333;
+  font-weight: bold;
+  color: #333;
 }
+
 .advocate-info .advocate-exp {
-    font-size: 12px;
-    color: #777;
-    margin-left: 5px;
+  font-size: 12px;
+  color: #777;
+  margin-left: 5px;
 }
+
 .advocate-info .advocate-city {
-    color: #777;
+  color: #777;
 }
+
 .answer-content {
-    font-size: 14px;
-    line-height: 1.5;
-    text-align: justify!important;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: justify!important;
 }
-@media (max-width: 768px) {
-    .timeline::before {
-        left: 8px;
-    }
-    .timeline-item {
-        width: 100%;
-        padding-left: 70px;
-        padding-right: 25px;
-    }
-    .timeline-item::after {
-        left: 15px;
-    }
+
+.col-sm-12 {
+  padding: 0px!important;
 }

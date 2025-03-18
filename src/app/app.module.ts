@@ -45,6 +45,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { LawyerRegistrationMaterialComponent } from './pages/lawyer-registration-material/lawyer-registration-material.component';
+import { FaqComponent } from './shared/faq/faq.component';
+import { ServiceEnquiryComponent } from './pages/service-enquiry/service-enquiry.component';
+import { FeesComponent } from './pages/fees/fees.component';
+import { LawyerProfileComponent } from './pages/lawyer-profile/lawyer-profile.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +81,10 @@ import { LawyerRegistrationMaterialComponent } from './pages/lawyer-registration
     AskQuestionComponent,
     LawyerRegistrationComponent,
     LawyerRegistrationMaterialComponent,
+    FaqComponent,
+    ServiceEnquiryComponent,
+    FeesComponent,
+    LawyerProfileComponent,
   ],
   imports: [
     BrowserModule,

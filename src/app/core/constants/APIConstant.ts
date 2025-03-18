@@ -31,4 +31,10 @@ export const APIConstant = {
   answer: {
     getAnswersByQuestionId: 'Category/GetAnswersByQuestionId',
   },
+  faq: {
+    getFAQByCategory: 'Category/GetFAQbyCategory',
+  },
+  enquiry: {
+    InsertEnquiry: 'Category/InsertEnquiry',
+  },
 };

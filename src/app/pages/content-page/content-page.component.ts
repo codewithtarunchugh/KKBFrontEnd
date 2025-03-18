@@ -14,6 +14,7 @@ import { ContentService } from 'src/app/core/services/content/content.service';
   styleUrls: ['./content-page.component.css'],
 })
 export class ContentPageComponent implements OnInit {
+  categoryId: number = 0;
   contentType: string | null = null;
   contentCategory: string | null = null;
   pageName: string | null = null;
